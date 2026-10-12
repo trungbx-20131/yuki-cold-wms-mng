@@ -1,0 +1,9 @@
+# Repo nộp chỉ chứa Markdown tự viết, báo cáo HTML của skill chấm SWP và skills/ (nếu có).
+*
+!.gitignore
+!*.md
+!*/
+!bao-cao-swp/**
+!skills/**
+!anh/**
+.DS_Store
