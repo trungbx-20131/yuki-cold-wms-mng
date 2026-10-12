@@ -1,4 +1,4 @@
-# Repo nộp chỉ chứa Markdown tự viết, báo cáo HTML của skill chấm SWP và skills/ (nếu có).
+# Repo nộp chỉ chứa Markdown tự viết, bản HTML kết quả chấm SWP và thư mục skills/ (nếu có).
 *
 !.gitignore
 !*.md
