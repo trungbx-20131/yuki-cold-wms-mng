@@ -2,7 +2,7 @@
 
 Backlog chia từ bộ thiết kế chi tiết LAB-4 đã nộp, cộng các khác biệt khai ở [PREMISE.md](PREMISE.md). Mã `E-nn` (epic), `I-nnn` (issue), `I-nnn.m` (sub-issue) là mã trong backlog; số issue trên GitHub (`#n`) được điền khi backlog đẩy lên Project. Trỏ `PREMISE.md P1-nn` là dòng có mã đó trong PREMISE.md: `P1` là chỗ thêm, bỏ, sửa so với thiết kế LAB-4, `P2` là giả định bổ sung, `P3` là hướng đã chốt kèm các phương án.
 
-Số đếm (sinh bằng script từ file backlog): **25 epic · 130 issue · 167 sub-issue** — 297 phần việc, trong đó 250 phần việc lá (không có con) là nơi ghi điểm và giờ.
+Số đếm (sinh bằng script từ file backlog): **26 epic · 144 issue · 173 sub-issue** — 317 phần việc, trong đó 268 phần việc lá (không có con) là nơi ghi điểm và giờ.
 
 ## 1. Nguyên tắc chia task
 
@@ -13,7 +13,7 @@ Số đếm (sinh bằng script từ file backlog): **25 epic · 130 issue · 16
 | G1 | Một issue hoặc sub-issue là một phần việc giao cho **đúng một vai** và xong trong **tối đa 3 ngày công** (24 giờ làm việc) của vai đó | Trường người phụ trách giả định có một giá trị; điểm và giờ kiểm lại khi ước lượng |
 | G2 | Màn **mức A** (màn mang luật nghiệp vụ riêng, theo phân loại phạm vi màn của gói thiết kế LAB-4): một issue cha "Dựng màn …" và ít nhất bốn sub-issue theo lớp — `.1` API và hàm DB · `.2` giao diện · `.3` luật nghiệp vụ · `.4` kiểm thử. Lớp nào quá 3 ngày công thì thêm sub-issue **cùng lớp** (`.5`, `.6`…), tách theo endpoint hoặc theo nhóm luật. Ngoại lệ: hai màn toàn giờ lái (SCR-SCH-02, SCR-SCH-05) không có sub-issue `.3`, vì lớp luật của hai màn là các issue riêng của E-32 theo G5; I-320 và I-321 chỉ gồm `.1`, `.2`, `.4` | Không có issue "làm màn X" chung chung cho màn mức A |
 | G3 | Màn **mức B** (không mang luật riêng): **một issue** khi việc nằm gọn trong một vai; khi cần cả endpoint mới và giao diện thì **đúng hai sub-issue** `.1` API · `.2` giao diện. Kiểm thử nằm trong định nghĩa xong của từng sub-issue | Màn mức B có 0 hoặc 2 sub-issue, thêm nữa phải có lý do quá 3 ngày công |
-| G4 | Phần dùng chung (migration 71 bảng, phân quyền, audit, khung giao diện, job theo lịch, tích hợp ngoài, hàm luật nhiều màn gọi) chỉ có issue ở nhóm nền tảng E-01…E-05. Issue màn ghi phụ thuộc tới issue nền tảng, không làm lại | Không có hai issue cùng làm một thành phần |
+| G4 | Phần dùng chung (migration 71 bảng, phân quyền, audit, khung giao diện, job theo lịch, tích hợp ngoài, hàm luật nhiều màn gọi) chỉ có issue ở các epic nền tảng E-01…E-05 (E-06 cùng nhóm nền tảng là kiểm chứng phi chức năng và kiểm thử hệ thống, không chứa thành phần dùng chung). Issue màn ghi phụ thuộc tới issue nền tảng, không làm lại | Không có hai issue cùng làm một thành phần |
 | G5 | Ràng buộc giờ lái 2024: mỗi điểm chạm là **một issue riêng** trong epic E-32, nhãn `rang-buoc-gio-lai-2024`; không làm sub-issue của màn lập tuyến hay xuất kho (phần 3) | Đối chiếu bảng truy vết với issue của E-32 |
 | G6 | Câu hỏi khách lặp ở nhiều màn: **một** issue làm rõ gốc (nhãn `lam-ro`, `cho-khach`); issue màn chỉ mang thẻ câu hỏi (mục 1.4) | Mỗi câu hỏi lặp có đúng một issue gốc |
 | G7 | Câu hỏi khách chỉ ở một màn: **không** tạo issue riêng — issue của màn mang nhãn `cho-khach`, thẻ câu hỏi và một dòng định nghĩa xong nêu giả định đang dùng. Ngoại lệ: chỗ hở mà tiền đề chọn xử lý bằng issue làm rõ (I-075, I-297, I-503, I-504, I-522, I-541), vì câu trả lời đổi thiết kế chứ không chỉ đổi một màn | Mọi issue có thẻ câu hỏi đều có dòng giả định |
@@ -24,7 +24,7 @@ Số đếm (sinh bằng script từ file backlog): **25 epic · 130 issue · 16
 
 1. Issue đã có giả định tạm **không** phụ thuộc issue làm rõ — chỉ mang nhãn `cho-khach` và thẻ câu hỏi, để việc không bị khoá chờ cuộc họp với khách. Chỉ issue không làm được trước khi có đáp án mới ghi phụ thuộc vào issue làm rõ.
 2. Giữa hai nhóm epic: phần tử gọi trực tiếp endpoint, hàm hoặc hộp thoại của nhóm kia thì ghi phụ thuộc ngay ở phần tử đó. Khi chỉ đọc dữ liệu do nhóm kia ghi (bảng đã có ở nền tảng), phụ thuộc đặt ở sub-issue kiểm thử của màn (mức A) hoặc sub-issue API (mức B), để có ca kiểm nối màn. Đọc cấu hình qua hàm đọc phiên bản dùng chung và dữ liệu khởi tạo thì không cần màn cấu hình xong trước.
-3. Nhóm nền tảng không bao giờ phụ thuộc nhóm màn; mỗi endpoint có đúng một issue làm chủ, issue khác cần endpoint đó chỉ ghi phụ thuộc.
+3. Nhóm nền tảng không bao giờ phụ thuộc nhóm màn; mỗi endpoint có đúng một issue làm chủ, issue khác cần endpoint đó chỉ ghi phụ thuộc. Riêng kiểm thử tải, kiểm thử hệ thống và kiểm bản địa hoá, khả năng truy cập của E-06 chạy trên bản dựng đã có các màn liên quan: điều kiện này ghi trong định nghĩa xong của từng issue và được xếp bằng Iteration, không ghi thành phụ thuộc.
 
 ### 1.2 Định nghĩa xong theo loại
 
@@ -49,7 +49,7 @@ Mục riêng bắt buộc theo ngữ cảnh: issue có giả định chờ khác
 - **Ba tầng, không có tầng thứ tư.** Epic là một issue GitHub mang nhãn `epic`; issue là sub-issue của epic; sub-issue là sub-issue của issue. Mọi epic, issue, sub-issue đều nằm trên Project.
 - **Người phụ trách (giả định)** lấy từ vai gợi ý của từng phần việc (BE-n, FE-n, QA-n, Designer, Infra, BrSE — đội giả định, không phải người thật).
 - **Điểm (point) và giờ** ghi ở phần việc lá: issue đã có sub-issue thì điểm và giờ nằm ở sub-issue, issue cha không chấm thêm; epic không chấm. Điểm của issue cha bằng tổng điểm con.
-- **Iteration** xếp theo phụ thuộc: nền tảng trước màn, API trước giao diện, luật trước kiểm thử; issue làm rõ đi sớm để đáp án về kịp trước khi màn liên quan đóng.
+- **Iteration** xếp theo phụ thuộc: nền tảng trước màn, API trước giao diện, luật trước kiểm thử; issue làm rõ đi sớm để đáp án về kịp trước khi màn liên quan đóng. Kế hoạch tải, bộ sinh dữ liệu giả lập, quét lỗ hổng và báo cáo độ sẵn sàng của E-06 đi cùng nền tảng; phần chạy trên bản dựng đầy đủ (kiểm thử tải, kiểm thử hệ thống, diễn tập, gói bằng chứng) xếp vào các sprint cuối.
 - **Nhãn cố định (12 nhãn):** loại — `du-lieu`, `api`, `giao-dien`, `luat`, `job`, `ha-tang`, `kiem-thu`, `lam-ro`; đặc tính — `muc-a`, `rang-buoc-gio-lai-2024`, `cho-khach`, `epic`. Mỗi phần việc mang đúng một nhãn loại.
 - **Thẻ câu hỏi:** phần việc có giả định chờ khách ghi mã câu hỏi trong thân issue (vd `cho-khach:KH-L4-30`) để lọc ra mọi phần việc chịu ảnh hưởng khi khách trả lời.
 
@@ -74,6 +74,7 @@ Cột cuối liệt kê phần việc mang thẻ câu hỏi (sinh bằng script;
 | KH-L4-40 | Hạn nạp CSV của logger nhiệt, số đo nạp muộn | I-493 | I-055.2, I-401, I-402, I-405 |
 | KH-L4-44 | Giao khác thứ tự, hàng bị chặn tại điểm nhận | I-295 | I-205, I-206 |
 | KH-L4-45 | Gốc so của phép cấm đảo ngày hạn: lần nhận gần nhất hay hạn lớn nhất | I-296 | I-202, I-203, I-205, I-206, I-209 |
+| KH-L4-47 | Giá trị và điều kiện vận hành: khôi phục, độ sẵn sàng, bảo trì, cảnh báo lỗi nghiêm trọng, khoá mã hoá | I-093 | I-004, I-086, I-089, I-090 |
 | KH-L4-48 | Mức đo nhiệt hàng khi nạp xe | I-193 | I-103, I-205 |
 | KH-L4-49 | Vị trí đặt lô cách ly khi dải nhiệt chưa khai ô cách ly | I-194 | I-102, I-104, I-105, I-106 |
 | Q4 | Đặc tả file đơn ERP và cách chuyển file | I-074 | I-070, I-071, I-076, I-201, I-521.1 |
@@ -91,7 +92,7 @@ Số lượng không phải thước đo; khoảng dự kiến lập lúc chốt
 
 | Nhóm epic | Issue | Dự kiến | Sub-issue | Dự kiến | Sub-issue thêm |
 |---|---|---|---|---|---|
-| Nền tảng (E-01…E-05) | 41 | 35–45 | 16 | 4–8 | 4 |
+| Nền tảng (E-01…E-06) | 55 | 35–45 | 22 | 4–8 | 6 |
 | Nhập kho, tồn kho (E-11…E-15) | 15 | 15–18 | 32 | 26–32 | 4 |
 | Xuất kho (E-21…E-24) | 17 | 16–20 | 23 | 18–22 | 3 |
 | Lập tuyến và giờ lái (E-31…E-32) | 22 | 10–16 | 16 | 10–14 | 2 |
@@ -100,7 +101,7 @@ Số lượng không phải thước đo; khoảng dự kiến lập lúc chốt
 
 Lý do vượt:
 
-- **Nền tảng (E-01…E-05):** sub-issue vượt vì bốn issue migration lớn (I-010, I-011, I-012, I-016, mỗi issue 10–13 bảng) tách theo nhóm bảng để mỗi phần việc vừa 3 ngày công (G1): bảng của bản dựng thử phải sửa tách khỏi bảng mới; nhóm người dùng, cấu hình tách ba phần. Số issue vẫn trong khoảng dự kiến, kể cả hai issue thêm cho job nhận file đơn ERP qua SFTP theo lịch (I-076) và hàm xếp thông báo thư dùng chung (I-077).
+- **Nền tảng (E-01…E-06):** issue và sub-issue vượt vì epic E-06 thêm sau khi chốt khoảng dự kiến: phần kiểm chứng yêu cầu phi chức năng của RFP (hiệu năng, khôi phục, độ sẵn sàng, quan sát vận hành, bảo mật, bản địa hoá, khả năng truy cập — mỗi loại bằng chứng RFP yêu cầu có issue làm ra nó) và kiểm thử hệ thống theo 50 ca kiểm thử của RFP; khả năng truy cập và kiểm thử hệ thống tách sub-issue vì quá 3 ngày công cho một vai. Ngoài E-06, sub-issue vượt vì bốn issue migration lớn (I-010, I-011, I-012, I-016, mỗi issue 10–13 bảng) tách theo nhóm bảng để mỗi phần việc vừa 3 ngày công (G1): bảng của bản dựng thử phải sửa tách khỏi bảng mới; nhóm người dùng, cấu hình tách ba phần. Không kể E-06, số issue nằm trong khoảng dự kiến, kể cả hai issue thêm cho job nhận file đơn ERP qua SFTP theo lịch (I-076) và hàm xếp thông báo thư dùng chung (I-077).
 - **Lập tuyến và giờ lái (E-31, E-32):** số issue vượt vì G5 bắt mỗi điểm chạm giờ lái là một issue riêng thay vì một sub-issue luật của màn; thêm ba issue làm rõ (I-391…I-393). Sub-issue vượt vì màn lập tuyến có thêm sub-issue API sửa tuyến đã phát hành và sub-issue mở rộng danh mục xe, khung giờ giao. Đây là chủ đích: việc chịu ràng buộc riêng của đề phải nhìn thấy và theo dõi được tách bạch.
 - **Nhiệt độ, truy xuất, báo cáo (E-41…E-44):** sub-issue vượt vì tám trên chín màn ở mức A (bốn lớp mỗi màn), và năm màn có lớp API quá 3 ngày công nên tách theo nhóm endpoint (G2): hồ sơ sai lệch, đầy đủ hồ sơ HACCP (tách hai lần, thêm một sub-issue giao diện), thu hồi và đối soát, thông báo thu hồi, xuất bằng chứng audit.
 - **Quản trị (E-51…E-55):** sub-issue vượt vì ba màn mức A rất lớn có lớp quá 3 ngày công — màn cấu hình luật (tám endpoint phiên bản), màn chuyển dữ liệu (sáu loại dữ liệu nạp), màn lưu giữ và purge (xoá hồ sơ qua hơn 20 bảng) — cộng sáu sub-issue của ba loại dữ liệu chủ mới (tài xế, xe, khung giờ giao — PREMISE.md P1-02).
@@ -141,7 +142,7 @@ Bảng phủ đủ 41 màn và mọi tài liệu nền tảng của gói thiết
 | SCR-TEMP-02 Bảng theo dõi nhiệt & hàng đợi alarm (mức A) | E-04, E-05, E-41, E-42 | I-054.4, I-077, I-402 (.1–.4), I-403, I-491, I-494 | Chỉ số mục tiêu về tỷ lệ xem xét trễ: đo ngoài hệ thống. Mức nghiêm trọng của alarm: khách chưa định nghĩa, hỏi ở I-491 |
 | SCR-TEMP-03 Hồ sơ sai lệch (deviation/HACCP) (mức A) | E-42 | I-404 (.1–.5), I-491 | Tạo hồ sơ từ alarm bằng endpoint riêng: thiết kế đích không có màn gọi, hồ sơ tự mở cùng alarm |
 | SCR-TEMP-04 Bảng đầy đủ hồ sơ HACCP (mức A) | E-41, E-42 | I-405 (.1–.7), I-492, I-493 | Báo cáo hồ sơ HACCP còn thiếu: thuộc nhóm báo cáo chưa dựng (PREMISE.md P2-10) |
-| SCR-TRC-01 Tra ngược nguồn gốc (mức A) | E-43 | I-406 (.1–.4) | — |
+| SCR-TRC-01 Tra ngược nguồn gốc (mức A) | E-06, E-43 | I-083, I-406 (.1–.4) | — |
 | SCR-TRC-02 Bảng case thu hồi + đối soát (mức A) | E-43 | I-407 (.1–.5) | — |
 | SCR-TRC-03 Soạn & duyệt thông báo thu hồi (mức A) | E-41, E-43 | I-408 (.1–.5), I-494 | Gửi lại thư thông báo lỗi: thuộc màn theo dõi tích hợp (I-521.1) |
 | SCR-RPT-01 Trung tâm báo cáo (mức B) | E-44 | I-409 (.1–.2), I-495 | Tám báo cáo chưa có mẫu: chưa có việc để giao, giữ trong danh mục ở trạng thái chưa dựng; hỏi khách ở I-495 |
@@ -205,7 +206,7 @@ Bảng phủ đủ 41 màn và mọi tài liệu nền tảng của gói thiết
 | architecture/kien-truc.md §3.8 | E-02, E-04 | I-016 (.1–.3), I-056 | — |
 | architecture/kien-truc.md §9 | E-02, E-03 | I-019, I-034 | — |
 | architecture/kien-truc.md §10 | E-02 | I-010 (.1–.2), I-011 (.1–.2), I-012 (.1–.2), I-013, I-014, I-015, I-016 (.1–.3) | — |
-| architecture/kien-truc.md §11 | E-01, E-04 | I-003, I-004, I-050 | — |
+| architecture/kien-truc.md §11 | E-01, E-04, E-06 | I-003, I-004, I-050, I-086, I-087, I-088, I-089, I-090, I-093 | — |
 | _common/error-codes.md | E-03 | I-030, I-038 | — |
 | _common/hop-dong-api-prototype.md | E-03 | I-030, I-038 | — |
 | database-diagram/ma-tran-quyen-that.md | E-03 | I-031 | — |
@@ -222,7 +223,7 @@ Bảng phủ đủ 41 màn và mọi tài liệu nền tảng của gói thiết
 | system-design/database-design/reporting/RPT_DB.md | E-02 | I-016 (.1–.3) | — |
 | premise/gia-tri-nghiep-vu.md | E-02 | I-018 | — |
 | premise/pham-vi-man-lab4.md | — | — | Nguồn của mức A/B dùng cho luật G2, G3; không phải việc |
-| premise/cau-hoi-khach-bo-sung-lab4.md | E-03, E-05 | I-045, I-074, I-075 | — |
+| premise/cau-hoi-khach-bo-sung-lab4.md | E-03, E-05, E-06 | I-045, I-074, I-075, I-093 | — |
 | PREMISE.md của LAB-4 §1, §2.1, §3, §4, §5 | — | — | Tiền đề đọc khi chia; giả định mới đi vào PREMISE.md của bài này |
 | wireframe/index.md | E-03 | I-036, I-039 | — |
 | _index.md | — | — | Trạng thái tài liệu; ba màn đang xem xét được ghi giả định (PREMISE.md P2-14) |
