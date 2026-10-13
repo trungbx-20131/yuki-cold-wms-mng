@@ -10,7 +10,7 @@ Thuật ngữ dùng trong báo cáo: **work item** là một epic, issue hoặc 
 
 ### 1.1 Thử nghiệm của lab này: dùng bộ skill Takumi ở mức tối thiểu
 
-Ở LAB-1 đến LAB-4, bộ skill Takumi được dùng tối đa. LAB-5 thử ngược lại để so chất lượng, thời gian và mức kiểm soát:
+Việc không dùng Takumi ở LAB-5 là **chủ ý của người làm lab**: một thử nghiệm so sánh cách làm thông thường (công cụ cơ bản của Claude Code cộng script tự viết) với cách dùng bộ skill Takumi ở mức tối đa như LAB-1 đến LAB-4, nhằm tìm cách tối ưu lượng token tiêu tốn (token burn) mà vẫn giữ chất lượng đầu ra. Ngoài token, thử nghiệm so thêm thời gian và mức kiểm soát. Cách làm:
 
 - Mặc định không dùng skill hay agent Takumi. Mọi việc làm bằng công cụ cơ bản của Claude Code (đọc, sửa, chạy lệnh), agent `general-purpose`, `gh` CLI, GraphQL của GitHub và script Python viết riêng cho bài.
 - Muốn dùng một skill Takumi thì phải hỏi người làm lab trước, nêu dùng gì, để làm gì, vì sao làm tay không đủ.
@@ -113,7 +113,7 @@ Lượt xác nhận (một agent Opus, chỉ đọc vùng đã đổi) chấm 8,
 | Số lượt review nội dung bằng agent | 5 lượt cho một gói, điểm không tăng | 4 lượt cho cả lab, có cổng dừng đặt trước |
 | Mức kiểm soát | Quy trình của kit quyết định nhiều bước | Mỗi bước do script hoặc người quyết; mọi số trên Project đọc lại được |
 
-Hai lab khác loại việc (thiết kế chi tiết và chia task), nên bảng chỉ cho thấy xu hướng, không phải phép đo đối chứng. Điều thấy rõ: khi bỏ các skill quy trình, phải tự viết lại phần khung (bản mô tả vai, mẫu prompt, luật review, cổng kiểm tra), nhưng đổi lại biết chính xác từng bước kiểm tra cái gì.
+Hai lab khác loại việc (thiết kế chi tiết và chia task), nên bảng chỉ cho thấy xu hướng, không phải phép đo đối chứng. Bài chưa đo trực tiếp số token của từng lab, vì công cụ ghi nhật ký chỉ ghi giờ và sự kiện; phần so token vì vậy dựa trên chỉ số gián tiếp: số skill nạp vào ngữ cảnh, số lượt review bằng agent, số giờ tương tác. Khi làm thật, nên ghi số token theo từng giai đoạn để so trực tiếp. Điều thấy rõ: khi bỏ các skill quy trình, phải tự viết lại phần khung (bản mô tả vai, mẫu prompt, luật review, cổng kiểm tra), nhưng đổi lại biết chính xác từng bước kiểm tra cái gì.
 
 ### 3.2 Chỗ tin là hiệu quả
 
