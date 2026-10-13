@@ -58,13 +58,13 @@ Mọi đầu ra phải qua script trước khi giao agent review, và reviewer k
 - đọc lại mọi trường đã ghi lên Project;
 - script kiểm tra nhất quán số giữa file nộp và Project (32 chỗ).
 
-Luật review đặt trước lượt đầu: tối đa hai lượt mỗi đầu ra, mỗi phát hiện phải gắn tiêu chí, không chốt luật nghiệp vụ mới để sửa một phát hiện. Cả lab dùng 4 lượt review nội dung bằng agent (backlog hai lượt, bản gửi khách hai lượt) và một lượt rà văn phong theo yêu cầu của người làm lab, so với 5 lượt chỉ riêng một gói ở LAB-4.
+Luật review đặt trước lượt đầu: tối đa hai lượt mỗi đầu ra, mỗi phát hiện phải gắn tiêu chí, không chốt luật nghiệp vụ mới để sửa một phát hiện. Cả lab dùng 4 lượt review nội dung bằng agent (backlog hai lượt, bản gửi khách hai lượt) và hai lượt rà văn phong theo yêu cầu của người làm lab, so với 5 lượt chỉ riêng một gói ở LAB-4.
 
 ### 2.3 Review bằng agent
 
 - **Backlog:** 6 agent review song song, mỗi agent một nhóm epic, đối chiếu hai chiều: mọi issue có nguồn trong spec, mọi phần spec có issue hoặc có lý do chưa thành issue. Lượt đầu: điểm trung bình 7,3, 4 lỗi Cao (còn 1 sau khi đối chiếu nguồn). Lượt xác nhận sau khi sửa: 8,4, 0 lỗi Cao, đạt cổng nên dừng.
 - **Bản gửi khách (README, estimate, báo cáo tiến độ, báo cáo này):** review mù một lần bằng hai agent trên hai model khác nhau, không thấy kết quả của nhau; kết quả ở mục 2.6.
-- **Văn phong:** một agent đóng vai biên tập viên tiếng Việt chấm mức dễ hiểu từng file (5–7/10), đề xuất 36 thuật ngữ cần thay và 39 câu viết lại. Bộ thuật ngữ thống nhất được áp cho mọi file bằng một script chạy cuối cùng; script che tiêu đề issue để tiêu đề trong file không lệch với GitHub.
+- **Văn phong:** một agent đóng vai biên tập viên tiếng Việt chấm mức dễ hiểu từng file (5–7/10), đề xuất 36 thuật ngữ cần thay và 39 câu viết lại; lượt kiểm tra lại sau khi áp chấm 6–8/10 và chỉ ra thêm 20 chỗ, trong đó 2 câu bị script thay từ làm sai, đã sửa. Bộ thuật ngữ thống nhất được áp cho mọi file bằng một script chạy cuối cùng; script che tiêu đề issue để tiêu đề trong file không lệch với GitHub.
 
 ### 2.4 Vấn đề trong output của AI và cách xử lý
 
@@ -77,7 +77,7 @@ Luật review đặt trước lượt đầu: tối đa hai lượt mỗi đầu
 | **Rủi ro ước thấp nêu quá mức**: AI ghi "khoảng 543 giờ (14 %) có thể ước thấp" ở ba epic, chỉ kèm hành động theo dõi | Người làm lab đòi phương án xử lý. Ước lại trực tiếp 30 leaf task của ba epic: chỉ cao hơn 49,5 giờ (+12 %); 543 giờ là chênh lệch với LAB-1, không phải mức ước thấp | Người làm lab chọn cập nhật giờ chính thức (3.974,5 → 4.024 giờ), cho backend hỗ trợ viết kiểm thử tự động, xếp lại sprint (Sprint 1 giữ nguyên); rủi ro còn lại ghi đúng mức |
 | Skill chấm migration 8 bảng là 12 SWP (cao nhất backlog) | Kiểm tra issue mẫu với DoD: tám bảng của một miền là một đợt migration có kiểm soát | Hạ 12 → 10, áp cùng luật cho 6 issue migration cùng nhóm |
 | AI nhẩm năng lực cả đội LAB-1 (gồm quản lý dự án và thiết kế) là 654 giờ mỗi sprint | Script cộng lại cùng bảng | 654 → 616 (sau khi thêm một frontend: 680); ghi luôn phép cộng vào bảng để người đọc tự kiểm tra |
-| Script đẩy backlog bản đầu đặt lại mọi trạng thái về Todo mỗi lần chạy lại | Chạy lần hai trên repo nháp sau khi đặt tay một trạng thái | Chỉ đặt trạng thái khi item mới hoặc trạng thái còn trống |
+| Script đẩy backlog bản đầu đặt lại mọi trạng thái về Todo mỗi lần chạy lại | Chạy lần hai trên repo nháp sau khi đặt tay một trạng thái | Chỉ đặt trạng thái khi work item mới tạo hoặc trạng thái còn trống |
 | Trích dẫn `file:dòng` lệch một dòng (hai lần), trích vào dòng lịch sử thay đổi thay vì thân spec (ba chỗ), ghi số liệu từ trí nhớ | Kiểm tra chéo bằng `grep -n`, in lại dòng thật | Thêm bước kiểm tra mọi trích dẫn bằng script vào checklist |
 | Email commit của repo nộp tự ghép từ tên máy và tên miền công ty | Kiểm tra tác giả commit khi một lần commit lỗi | Đổi sang mã học viên và email ẩn danh của GitHub, viết lại hai commit đầu |
 | Tên vai nội bộ lọt vào báo cáo HTML nộp | Cổng repo public | Sửa câu chữ, xuất lại báo cáo |
@@ -121,7 +121,7 @@ Hai lab khác loại việc (thiết kế chi tiết và chia task), nên bảng
 - **Đặt luật review trước lượt đầu** giúp dừng đúng lúc: backlog đạt cổng sau hai lượt, không lặp tình trạng 5 lượt như LAB-4.
 - **Kịch bản giả lập viết trước rồi mới cập nhật Project**, mỗi chỗ lệch trỏ tới một câu hỏi khách hoặc chỗ hở có thật, nên báo cáo tiến độ không phải bịa nguyên nhân.
 - **Ước giờ mà không cho xem SWP** hai lần mang lại thông tin thật. Lần đầu (10 issue mẫu) cho thấy skill chấm giao diện và kiểm thử thấp hơn công thật (4,3–5,5 giờ/SWP so với 2–3,3 của backend); nếu dùng một hệ số chung, giờ frontend và kiểm thử thiếu khoảng 30 %. Lần hai (30 leaf task của ba epic) cho thấy chênh lệch lớn với LAB-1 chủ yếu nằm ở cách LAB-1 phân bổ giờ, LAB-5 chỉ ước thấp khoảng 12 %.
-- **Thử chịu tải kế hoạch bằng script** trước khi chọn cách xử lý rủi ro: tăng giờ ba epic thì kế hoạch chậm khoảng 4 ngày; cho backend hỗ trợ viết kiểm thử tự động thì vẫn xong Sprint 9.
+- **Chạy thử kế hoạch bằng script với từng phương án** trước khi chọn cách xử lý rủi ro: tăng giờ ba epic thì kế hoạch chậm khoảng 4 ngày; cho backend hỗ trợ viết kiểm thử tự động thì vẫn xong Sprint 9.
 
 ### 3.3 Chỗ chưa tốt, khi làm thật cần cải thiện
 
@@ -131,7 +131,7 @@ Hai lab khác loại việc (thiết kế chi tiết và chia task), nên bảng
 - **Rủi ro nên đi kèm số đo ngay từ đầu:** AI nêu rủi ro ước thấp bằng chênh lệch với LAB-1 rồi chỉ đề nghị theo dõi; ước lại trực tiếp chỉ mất vài phút và cho con số đúng mức.
 - **Vai gợi ý lúc chia task không cân tải:** một backend nhận 700 giờ, nên khi xếp sprint 157/268 leaf task phải đổi người. Lúc chia task nên kiểm tra tải theo vai.
 - **Câu chữ:** AI dùng từ tự đặt quen trong quá trình làm (`việc lá`, `lát`, `độ hạt`), người ngoài khó hiểu. Nên chốt bảng thuật ngữ trước khi viết file nộp, không đợi rà ở cuối.
-- **Đo giờ còn hở:** công cụ tính giờ coi khoảng lặng trên 20 phút là nghỉ, nên lượt AI chạy dài bị tính thiếu; một đoạn khoảng 30 phút không được ghi vì tệp cấu hình ghi nhật ký bị xoá khỏi thư mục làm việc, phải bù từ bản ghi hội thoại.
+- **Đo giờ còn thiếu sót:** công cụ tính giờ coi khoảng lặng trên 20 phút là nghỉ, nên lượt AI chạy dài bị tính thiếu; một đoạn khoảng 30 phút không được ghi vì tệp cấu hình ghi nhật ký bị xoá khỏi thư mục làm việc, phải bù từ bản ghi hội thoại.
 - **Ghi lên GitHub từng ô một** mất khoảng 3 giây mỗi ô, và đọc cả Project kèm thân issue làm cạn hạn mức GraphQL theo giờ; nên gộp nhiều ô vào một lệnh và chỉ đọc đúng các trường cần ngay từ đầu.
 
 ### 3.4 Giờ làm thật

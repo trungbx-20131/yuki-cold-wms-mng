@@ -2,13 +2,13 @@
 
 Báo cáo chấm SWP (HTML): [bao-cao-swp/sun-estimate-yuki-cold-wms-mng-20261012-1709.html](bao-cao-swp/sun-estimate-yuki-cold-wms-mng-20261012-1709.html)
 
-Thuật ngữ: SWP (Standard Work Point) là điểm khối lượng chuẩn của một việc; leaf task là issue hoặc sub-issue không có sub-issue con, nơi ghi SWP và giờ; buffer là phần năng lực còn trống để đỡ trễ; MD là ngày công (1 MD = 8 giờ); DoD là định nghĩa xong của issue; BrSE là kỹ sư cầu nối với khách Nhật; UAT là kiểm thử chấp nhận do khách thực hiện; BCP là kế hoạch duy trì hoạt động khi có sự cố; FEFO là xuất lô hết hạn trước; HACCP là hệ thống kiểm soát mối nguy an toàn thực phẩm (bắt buộc ở Nhật từ 6/2021); POD là xác nhận giao hàng tại điểm nhận; legal hold là giữ dữ liệu không cho xoá vì lý do pháp lý; purge là xoá dữ liệu hết hạn lưu giữ. Mã `E-nn`, `I-nnn` dẫn tới issue trên GitHub.
+Thuật ngữ: SWP (Standard Work Point) là điểm khối lượng chuẩn của một việc; leaf task là issue hoặc sub-issue không có sub-issue con, nơi ghi SWP và giờ; buffer là khoảng thời gian còn trống giữa ngày dự kiến xong và mốc, dùng để bù khi trễ; MD là ngày công (1 MD = 8 giờ); DoD (Definition of Done) là điều kiện để coi một issue là xong; BrSE là kỹ sư cầu nối với khách Nhật; UAT là kiểm thử chấp nhận do khách thực hiện; BCP là kế hoạch duy trì hoạt động khi có sự cố; FEFO là xuất lô hết hạn trước; HACCP là hệ thống kiểm soát mối nguy an toàn thực phẩm (bắt buộc ở Nhật từ 6/2021); POD là xác nhận giao hàng tại điểm nhận; legal hold là giữ dữ liệu không cho xoá vì lý do pháp lý; purge là xoá dữ liệu hết hạn lưu giữ. Mã `E-nn`, `I-nnn` dẫn tới issue trên GitHub.
 
 Backlog có 268 leaf task được chấm; epic và issue cha lấy tổng SWP của việc con. Tổng sau khi kiểm issue mẫu: **1165 SWP** (skill chấm ban đầu 1177 SWP).
 
 ## 1. Issue mẫu được kiểm
 
-Công cụ chấm (skill `tkm:sun-estimate`) chọn 5 issue mẫu theo quy tắc cố định (nhỏ nhất, trung vị, lớn nhất, lệch xa trung vị, độ tin cậy thấp nhất). Mỗi issue được đối chiếu với định nghĩa xong (DoD) và spec nguồn, rồi chốt mức khó và điểm. Scope là độ rộng công việc (1, 2, 3, 5, 8, 13), Complexity là độ khó bên trong (0, 1, 2, 3, 5, 8); SWP tra từ bảng cố định Scope × Complexity.
+Công cụ chấm (skill `tkm:sun-estimate`) chọn 5 issue mẫu theo quy tắc cố định (nhỏ nhất, trung vị, lớn nhất, lệch xa trung vị, độ tin cậy thấp nhất). Mỗi issue được đối chiếu với DoD và spec nguồn, rồi chốt mức khó và điểm. Scope là độ rộng công việc (1, 2, 3, 5, 8, 13), Complexity là độ khó bên trong (0, 1, 2, 3, 5, 8); SWP tra từ bảng cố định Scope × Complexity.
 
 | Issue | Vì sao được chọn | Skill chấm: Scope × Complexity → SWP | Điểm chốt sau kiểm tra | Lý do |
 |---|---|---|---|---|
@@ -37,17 +37,17 @@ Khi nhập điểm chốt, skill tự chọn ô Scope × Complexity gần đánh
 
 **Vì sao:** một hệ số áp cho mọi issue giữ được nhất quán và kiểm lại được bằng phép nhân, thay vì ước tay 268 leaf task. Hệ số lấy từ 10 issue mẫu trải đều các mức SWP và loại việc, được ước giờ trực tiếp từ nội dung issue mà không xem SWP, nên hệ số không bị điểm kéo theo. Mẫu cho thấy giao diện và kiểm thử tốn khoảng 1,8 lần giờ mỗi SWP so với backend, nên dùng hệ số theo nhóm thay vì một hệ số chung.
 
-**Quy tắc:** hệ số nhóm = tổng giờ ước trực tiếp của mẫu trong nhóm ÷ tổng SWP của các mẫu đó. Giờ leaf task = SWP × hệ số nhóm, làm tròn 0,5 giờ (tối thiểu 0,5); epic và issue cha = tổng giờ việc con. Giờ là công làm của một người đúng vai: đọc spec, làm, tự kiểm theo định nghĩa xong, sửa sau review — không gồm dự phòng, chờ khách trả lời, quản lý dự án.
+**Quy tắc:** hệ số nhóm = tổng giờ ước trực tiếp của mẫu trong nhóm ÷ tổng SWP của các mẫu đó. Giờ leaf task = SWP × hệ số nhóm, làm tròn 0,5 giờ (tối thiểu 0,5); epic và issue cha = tổng giờ việc con. Giờ là công làm của một người đúng vai: đọc spec, làm, tự kiểm theo DoD, sửa sau review — không gồm dự phòng, chờ khách trả lời, quản lý dự án.
 
 **Áp dụng nhất quán:** một script tính giờ cho mọi leaf task từ SWP đã chốt (trừ các ngoại lệ ước trực tiếp nêu dưới bảng) và ghi lên trường giờ ước lượng của Project; đọc lại trường này so với bảng giờ, lệch 0.
 
-| Nhóm việc | Hệ số (giờ/SWP) | Leaf task | SWP | Giờ |
+| Nhóm việc | Hệ số (giờ/SWP) | Leaf task | SWP | Giờ (đã gồm ngoại lệ ước trực tiếp) |
 |---|---|---|---|---|
 | Backend, DB, hạ tầng, tích hợp | 2,69 | 147 | 724 | 2.008 |
 | Giao diện và kiểm thử | 4,86 | 91 | 390 | 1.889 |
 | Làm rõ với khách | 2,5 | 30 | 51 | 127 |
 
-**Ngoại lệ:** 30 leaf task của ba epic có chênh lớn nhất với estimate LAB-1 ([E-21](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/15), [E-51](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/25), [E-44](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/24)) được ước lại trực tiếp từng việc, theo từng bước (đọc spec, làm, kiểm thử theo định nghĩa xong, sửa sau review), không xem SWP và giờ cũ. Giờ ước trực tiếp thay giờ quy từ SWP: 399 giờ → 448,5 giờ (khoảng 328,5–622,5 giờ). Việc có độ tin cậy thấp là chỗ spec còn để ngỏ, nêu ở rủi ro của progress-report.md.
+**Ngoại lệ:** 30 leaf task của ba epic có chênh lớn nhất với estimate LAB-1 ([E-21](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/15), [E-51](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/25), [E-44](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/24)) được ước lại trực tiếp từng việc, theo từng bước (đọc spec, làm, kiểm thử theo DoD, sửa sau review), không xem SWP và giờ cũ. Giờ ước trực tiếp thay giờ quy từ SWP: 399 giờ → 448,5 giờ (khoảng 328,5–622,5 giờ). Việc có độ tin cậy thấp là chỗ spec còn để ngỏ, nêu ở rủi ro của progress-report.md.
 
 | Việc | Giờ quy từ SWP | Giờ ước trực tiếp | Khoảng | Độ tin cậy |
 |---|---|---|---|---|
@@ -81,6 +81,8 @@ Khi nhập điểm chốt, skill tự chọn ô Scope × Complexity gần đánh
 | [#287](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/287) I-501.4 Viết bộ kiểm thử cho màn cấu hình luật nghiệp vụ | 19,5 | 27,5 | 20–37 | vừa |
 | [#288](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/288) I-501.5 Dựng API phiên bản quy tắc cửa sổ hạn giao và bộ tham số giờ lái, HACCP | 21,5 | 18 | 13–24 | vừa |
 | [#289](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/289) I-501.6 Dựng giao diện khối cửa sổ hạn giao và hai bộ tham số cho màn cấu hình luật nghiệp vụ | 19,5 | 15,5 | 12–22 | vừa |
+
+Tiêu đề [I-292](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/93), [I-296](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/97) trên GitHub giữ tên cũ: `khoá so` nghĩa là đơn vị so sánh, `gốc so` nghĩa là mốc so sánh của phép cấm đảo ngày hạn.
 
 Issue mẫu ước giờ trực tiếp:
 
@@ -129,7 +131,13 @@ Issue mẫu ước giờ trực tiếp:
 | [E-55](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/29) Dựng lưu giữ dữ liệu, legal hold và purge | 8 | 42 | 130 | 2 issue, 7 sub-issue |
 | **Cộng** | **268** | **1165** | **4.024** | |
 
-Kiểm năng lực: đội làm issue (backend, frontend, kiểm thử, hạ tầng, BrSE) có 611 giờ mỗi sprint, gồm đội hình của estimate LAB-1 và một frontend bổ sung. 4.024 giờ ÷ 611 giờ ≈ 6,6 sprint, trong khung 8,6 sprint quy đổi của giai đoạn xây dựng (Sprint 3 trùng kỳ nghỉ đầu năm của Nhật 29/12–3/1 nên tính 60 %). Phép chia tổng giờ chưa đủ: khi xếp từng việc theo vai và phụ thuộc, đội hình LAB-1 cần 10 sprint, vì phần frontend chiếm khoảng 93 % năng lực của hai frontend mà màn chỉ dựng được khi API đã bắt đầu. Thêm một frontend toàn thời gian từ Sprint 1 và để backend hỗ trợ viết kiểm thử tự động thì kế hoạch vừa 9 sprint: việc cuối xong ngày làm việc thứ 87,6 trên 90 (buffer khoảng 2,4 ngày); Sprint 9 dùng 51 % năng lực backend, 53 % frontend, 68 % kiểm thử. Phần thêm là 550,4 giờ (68,8 MD) so với đội hình LAB-1. Sprint của từng issue xem ở trường Iteration trên GitHub Project; tình hình sau Sprint 1 và rủi ro trễ ở progress-report.md.
+Kiểm năng lực:
+
+- Đội làm issue (backend, frontend, kiểm thử, hạ tầng, BrSE) có 611 giờ mỗi sprint: đội hình estimate LAB-1 cộng một frontend bổ sung.
+- Chia tổng giờ: 4.024 ÷ 611 ≈ 6,6 sprint, nằm trong 8,6 sprint quy đổi của giai đoạn xây dựng (Sprint 3 trùng kỳ nghỉ đầu năm của Nhật 29/12–3/1 nên tính 60 %).
+- Phép chia này chưa đủ: khi xếp từng việc theo vai và phụ thuộc, đội hình LAB-1 cần 10 sprint, vì frontend chiếm khoảng 93 % năng lực của hai frontend và màn hình chỉ dựng được khi API đã bắt đầu.
+- Thêm một frontend toàn thời gian từ Sprint 1 (thêm 550,4 giờ, tức 68,8 MD so với đội hình LAB-1) và để backend hỗ trợ viết kiểm thử tự động thì kế hoạch vừa 9 sprint: việc cuối xong ngày làm việc thứ 87,6 trên 90 (buffer khoảng 2,4 ngày); Sprint 9 dùng 51 % năng lực backend, 53 % frontend, 68 % kiểm thử.
+- Sprint của từng issue xem ở trường Iteration trên GitHub Project; tình hình sau Sprint 1 và rủi ro trễ ở progress-report.md.
 
 ## 4. So với estimate LAB-1
 
