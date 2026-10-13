@@ -1,6 +1,6 @@
 # Báo cáo dùng AI — LAB-5 (Yuki Cold WMS)
 
-Phạm vi: toàn bộ LAB-5 — break task từ bộ thiết kế LAB-4, dựng GitHub Project, chấm SWP, quy giờ, lập kế hoạch sprint, giả lập Sprint 1 và lập báo cáo tiến độ. Thực hiện 2026-10-12 → 2026-10-13 trên hai máy, công cụ chính là Claude Code. Mỗi ca AI sai, giữ hoặc bác được ghi vào sổ ca ngay khi xảy ra; báo cáo này tổng hợp từ sổ đó: 72 ca, gồm 36 ca AI sai đã sửa, 19 ca nghi sai nhưng kiểm rồi giữ, 6 ca bác gợi ý, 6 góp ý của agent review, 4 ca ngữ cảnh nhiễu và 1 lần hỏi dùng skill Takumi.
+Phạm vi: toàn bộ LAB-5 — break task từ bộ thiết kế LAB-4, dựng GitHub Project, chấm SWP, quy giờ, lập kế hoạch sprint, giả lập Sprint 1 và lập báo cáo tiến độ. Thực hiện 2026-10-12 → 2026-10-13 trên hai máy, công cụ chính là Claude Code. Mỗi ca AI sai, giữ hoặc bác được ghi vào sổ ca ngay khi xảy ra; báo cáo này tổng hợp từ sổ đó: 78 ca, gồm 40 ca AI sai đã sửa, 20 ca nghi sai nhưng kiểm rồi giữ, 6 ca bác gợi ý, 7 góp ý của agent review, 4 ca ngữ cảnh nhiễu và 1 lần hỏi dùng skill Takumi.
 
 ## 1. Skill đã dùng và cách viết prompt cho từng việc
 
@@ -53,7 +53,7 @@ Mọi đầu ra phải qua script trước khi giao agent review, và reviewer k
 - cổng repo public: câu chép RFP hoặc đề, khoá bí mật, từ nội bộ, dữ liệu cá nhân, link hỏng;
 - đọc lại mọi trường đã ghi lên Project.
 
-Luật review đặt trước lượt đầu: tối đa hai lượt mỗi đầu ra, mỗi phát hiện phải gắn tiêu chí, không chốt luật nghiệp vụ mới để sửa một phát hiện. Cả lab dùng 3 lượt review bằng agent, so với 5 lượt chỉ riêng một gói ở LAB-4.
+Luật review đặt trước lượt đầu: tối đa hai lượt mỗi đầu ra, mỗi phát hiện phải gắn tiêu chí, không chốt luật nghiệp vụ mới để sửa một phát hiện. Cả lab dùng 4 lượt review bằng agent (backlog hai lượt, bản gửi khách hai lượt), so với 5 lượt chỉ riêng một gói ở LAB-4.
 
 ### 2.3 Review bằng agent
 
@@ -87,7 +87,9 @@ Luật review đặt trước lượt đầu: tối đa hai lượt mỗi đầu
 
 Ở lượt review parity đầu, reviewer lát nền tảng chỉ ra quyết định "chỉ gửi thư cảnh báo" trái RFP: điểm tích hợp thư của RFP gồm cả thư phê duyệt và thư báo cáo. Phiên chính in lại dòng RFP để kiểm, xác nhận đúng. Người làm lab chốt lại: giữ ba loại thư, người nhận theo giả định tạm (PREMISE.md P2-03), thêm một issue làm rõ với khách. Khi sửa, hai agent tách task lập điểm chạm theo thực thể và thấy danh sách giao sửa còn sót ba hàng đợi duyệt; cả ba được duyệt bổ sung.
 
-Review mù bản gửi khách (phase cuối): _điền sau khi chạy._
+Review mù bản gửi khách: hai agent trên hai model (Opus, Sonnet), không thấy nhau, cùng chấm 7,5/10. Cả hai cùng bắt một lỗi của AI ở báo cáo tiến độ: burndown gán chênh ngày 09/12 cho chuỗi migration, trong khi nguyên nhân là issue đăng nhập bị chặn vì chờ câu hỏi Q5. Lỗi Cao duy nhất do agent Sonnet nêu: phần việc Sprint 1 chuyển sang (88,5 giờ backend, 64 giờ frontend) không vừa chỗ trống của Sprint 2 (16,5 và 8,5 giờ), nhưng báo cáo chỉ ghi "lập lại kế hoạch Sprint 2". Xử lý: thêm chế độ xếp lại thử sau Sprint 1 vào script xếp sprint, viết lại dòng rủi ro theo hai kịch bản (vẫn xong Sprint 9 nếu việc dở còn 25–50 % giờ; trễ khoảng 3 ngày làm việc nếu phải làm lại toàn bộ).
+
+Lượt xác nhận (một agent Opus, chỉ đọc vùng đã đổi) chấm 8,0 và bắt chính lỗi của phiên chính khi sửa: số việc phải dời của hai kịch bản bị gán lẫn nhau. Từ đó script xếp lại tự in các số này và script kiểm nhất quán so chúng với báo cáo, để lần sau máy bắt được.
 
 ## 3. Điểm đặc biệt: chỗ hiệu quả, chỗ cần cải thiện
 
@@ -97,8 +99,8 @@ Review mù bản gửi khách (phase cuối): _điền sau khi chạy._
 |---|---|---|
 | Skill Takumi dùng | Nhiều skill quy trình và agent của bộ kit | 1 skill (`tkm:sun-estimate`), hỏi trước khi dùng |
 | Giờ có tương tác với AI | 24,0 giờ (17 phiên, 487 prompt) | _điền khi chốt giờ_ (mục 3.4) |
-| Ca ghi trong sổ | 406 (256 sửa) | 72 (36 sửa, 19 giữ, 6 bác, 6 góp ý review, 4 nhiễu, 1 hỏi Takumi) |
-| Số lượt review bằng agent | 5 lượt cho một gói, điểm không tăng | 3 lượt cho cả lab, có cổng dừng đặt trước |
+| Ca ghi trong sổ | 406 (256 sửa) | 78 (40 sửa, 20 giữ, 6 bác, 7 góp ý review, 4 nhiễu, 1 hỏi Takumi) |
+| Số lượt review bằng agent | 5 lượt cho một gói, điểm không tăng | 4 lượt cho cả lab, có cổng dừng đặt trước |
 | Mức kiểm soát | Quy trình của kit quyết định nhiều bước | Mỗi bước do script hoặc người quyết; mọi số trên Project đọc lại được |
 
 Hai lab khác loại việc (thiết kế chi tiết và break task), nên bảng chỉ cho thấy xu hướng, không phải phép đo đối chứng. Điều thấy rõ: khi bỏ các skill quy trình, phải tự viết lại phần khung (thẻ vai, mẫu prompt, luật review, cổng kiểm), nhưng đổi lại biết chính xác từng bước kiểm cái gì.
