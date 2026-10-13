@@ -1,6 +1,6 @@
 # Báo cáo dùng AI — LAB-5 (Yuki Cold WMS)
 
-Phạm vi: toàn bộ LAB-5 — break task từ bộ thiết kế LAB-4, dựng GitHub Project, chấm SWP, quy giờ, lập kế hoạch sprint, giả lập Sprint 1 và lập báo cáo tiến độ. Thực hiện 2026-10-12 → 2026-10-13 trên hai máy, công cụ chính là Claude Code. Mỗi ca AI sai, giữ hoặc bác được ghi vào sổ ca ngay khi xảy ra; báo cáo này tổng hợp từ sổ đó (72 ca).
+Phạm vi: toàn bộ LAB-5 — break task từ bộ thiết kế LAB-4, dựng GitHub Project, chấm SWP, quy giờ, lập kế hoạch sprint, giả lập Sprint 1 và lập báo cáo tiến độ. Thực hiện 2026-10-12 → 2026-10-13 trên hai máy, công cụ chính là Claude Code. Mỗi ca AI sai, giữ hoặc bác được ghi vào sổ ca ngay khi xảy ra; báo cáo này tổng hợp từ sổ đó: 72 ca, gồm 36 ca AI sai đã sửa, 19 ca nghi sai nhưng kiểm rồi giữ, 6 ca bác gợi ý, 6 góp ý của agent review, 4 ca ngữ cảnh nhiễu và 1 lần hỏi dùng skill Takumi.
 
 ## 1. Skill đã dùng và cách viết prompt cho từng việc
 
@@ -65,11 +65,11 @@ Luật review đặt trước lượt đầu: tối đa hai lượt mỗi đầu
 | AI sai gì | Phát hiện bằng gì | Xử lý |
 |---|---|---|
 | **Ba lần đề xuất phương án trái RFP** làm phương án khuyến nghị: chọn bộ quy tắc giờ lái theo ngày chạy tuyến thay vì phiên bản hiệu lực lúc phát hành; chỉ gửi thư cảnh báo, bỏ thư phê duyệt và báo cáo; tải file đơn tay thay vì nhận theo lịch. Người làm lab đã chọn theo đề xuất | Agent viết tiền đề và agent review đối chiếu lại RFP | Chốt lại ba quyết định, sửa tiền đề và lan tới mọi issue chạm thực thể; thêm vào checklist: đối chiếu từng phương án với RFP trước khi trình |
-| **Backlog thiếu cả mảng phi chức năng** (kiểm thử tải, WCAG, diễn tập khôi phục, kiểm thử hệ thống, quét bảo mật), dù kế hoạch đã chốt phải phủ; hai lượt review parity không bắt được | So giờ với estimate LAB-1 theo vai: kiểm thử thấp hơn 538 giờ, hạ tầng thấp hơn 191 giờ | Bổ sung epic phi chức năng (21 phần tử), chấm SWP lại cho phần mới bằng cùng luật |
-| **Kiểm năng lực theo tổng giờ** ra "7,3 sprint, vừa khung 8,6 sprint" | Script xếp từng việc theo vai và phụ thuộc: đội hình LAB-1 cần 10 sprint vì frontend chỉ dựng màn được khi API đã bắt đầu | Người làm lab chọn thêm một frontend toàn thời gian; sửa đội hình ở file nguồn và lan sang estimate.md |
+| **Backlog thiếu cả mảng phi chức năng** (kiểm thử tải, WCAG, diễn tập khôi phục, kiểm thử hệ thống, quét bảo mật), dù kế hoạch đã chốt phải phủ; hai lượt review parity không bắt được | So giờ với estimate LAB-1 theo vai, lúc chưa bổ sung: kiểm thử thấp hơn 538 giờ, hạ tầng thấp hơn 191 giờ | Bổ sung epic phi chức năng (21 phần tử), chấm SWP lại cho phần mới bằng cùng luật |
+| **Kiểm năng lực theo tổng giờ** ra "7,3 sprint, vừa khung 8,6 sprint" (lúc đó tính 547 giờ mỗi sprint cho các vai làm issue của đội LAB-1; số hiện hành trong estimate.md là 611 giờ, đã gồm frontend bổ sung) | Script xếp từng việc theo vai và phụ thuộc: đội hình LAB-1 cần 10 sprint vì frontend chỉ dựng màn được khi API đã bắt đầu | Người làm lab chọn thêm một frontend toàn thời gian; sửa đội hình ở file nguồn và lan sang estimate.md |
 | Phiên chính báo "đội LAB-1 cần 11 sprint" từ một bản thử tính xấp xỉ | Thêm tuỳ chọn để con số chạy lại được bằng script; kết quả là 10 | Sửa về 10 ở mọi chỗ, báo lại người làm lab |
 | Skill chấm migration 8 bảng là 12 SWP (cao nhất backlog) | Kiểm issue mẫu với định nghĩa xong: tám bảng một miền là một đợt migration có kiểm soát | Hạ 12 → 10, áp cùng luật cho 6 issue migration cùng nhóm |
-| AI nhẩm năng lực đội 654 giờ mỗi sprint | Script cộng lại cùng bảng | 654 → 616; ghi luôn phép cộng vào bảng để người đọc tự kiểm |
+| AI nhẩm năng lực cả đội LAB-1 (gồm quản lý dự án, thiết kế) là 654 giờ mỗi sprint | Script cộng lại cùng bảng | 654 → 616 (sau khi thêm một frontend: 680); ghi luôn phép cộng vào bảng để người đọc tự kiểm |
 | Script đẩy backlog bản đầu đặt lại mọi trạng thái về Todo mỗi lần chạy lại | Chạy lần hai trên repo nháp sau khi đặt tay một trạng thái | Chỉ đặt trạng thái khi item mới hoặc trạng thái rỗng |
 | Trích dẫn `file:dòng` lệch một dòng (hai lần), trích vào dòng lịch sử thay đổi thay vì thân spec (ba chỗ), ghi số liệu từ trí nhớ | Kiểm chéo bằng `grep -n`, in lại dòng thật | Thêm bước kiểm mọi trích dẫn bằng script vào checklist cho mọi lượt sau |
 | Email commit của repo nộp tự ghép từ tên máy và tên miền công ty | Kiểm tác giả commit khi một lần commit lỗi | Đổi sang mã học viên và email ẩn danh của GitHub, viết lại hai commit đầu |
@@ -97,7 +97,7 @@ Review mù bản gửi khách (phase cuối): _điền sau khi chạy._
 |---|---|---|
 | Skill Takumi dùng | Nhiều skill quy trình và agent của bộ kit | 1 skill (`tkm:sun-estimate`), hỏi trước khi dùng |
 | Giờ có tương tác với AI | 24,0 giờ (17 phiên, 487 prompt) | _điền khi chốt giờ_ (mục 3.4) |
-| Ca ghi trong sổ | 406 (256 sửa) | 72 (36 sửa, 19 giữ, 6 bác) |
+| Ca ghi trong sổ | 406 (256 sửa) | 72 (36 sửa, 19 giữ, 6 bác, 6 góp ý review, 4 nhiễu, 1 hỏi Takumi) |
 | Số lượt review bằng agent | 5 lượt cho một gói, điểm không tăng | 3 lượt cho cả lab, có cổng dừng đặt trước |
 | Mức kiểm soát | Quy trình của kit quyết định nhiều bước | Mỗi bước do script hoặc người quyết; mọi số trên Project đọc lại được |
 
