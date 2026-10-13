@@ -32,7 +32,7 @@ Thuật ngữ: SWP (Standard Work Point) là điểm khối lượng chuẩn c�
 | [AI-report.md](AI-report.md) | Cách dùng AI: skill và prompt, cách review output của AI, điểm đặc biệt |
 | [bao-cao-swp/](bao-cao-swp/) | Báo cáo chấm SWP dạng HTML, xuất từ công cụ chấm SWP (skill `tkm:sun-estimate`); tải về rồi mở bằng trình duyệt |
 | [anh/](anh/) | Ảnh dùng trong báo cáo (biểu đồ burndown Sprint 1) |
-| [skills/](skills/) | Skill tự viết: quy đổi SWP ra giờ theo hệ số nhóm việc và ghi SWP, giờ lên GitHub Project (nối tiếp skill chấm SWP) |
+| [skills/](skills/) | Hai skill tự viết: chia task từ thiết kế chi tiết lên GitHub Project (khung, gộp và kiểm backlog, đẩy lên chạy lại an toàn); quy đổi SWP ra giờ và ghi SWP, giờ lên Project |
 | [.gitignore](.gitignore) | Bỏ qua tệp tạm của hệ điều hành và trình soạn thảo |
 
 ## 4. Spec → epic
