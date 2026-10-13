@@ -92,7 +92,7 @@ Issue mẫu ước giờ trực tiếp:
 | E-55 Dựng lưu giữ dữ liệu, legal hold và purge | 8 | 42 | 130 | 2 issue, 7 sub-issue |
 | **Cộng** | **268** | **1165** | **3.974,5** | |
 
-Kiểm năng lực: đội làm issue (backend, frontend, kiểm thử, hạ tầng, BrSE) có 547 giờ mỗi sprint theo đội hình của estimate LAB-1. 3.974,5 giờ ÷ 547 giờ ≈ 7,3 sprint, trong khung 8,6 sprint quy đổi của giai đoạn xây dựng (một sprint trùng nghỉ Tết tính 60 %). Xếp sprint theo vai và phụ thuộc làm ở bước tiếp theo.
+Kiểm năng lực: đội làm issue (backend, frontend, kiểm thử, hạ tầng, BrSE) có 611 giờ mỗi sprint, gồm đội hình của estimate LAB-1 và một frontend bổ sung. 3.974,5 giờ ÷ 611 giờ ≈ 6,5 sprint, trong khung 8,6 sprint quy đổi của giai đoạn xây dựng (một sprint trùng nghỉ Tết tính 60 %). Phép chia tổng giờ chưa đủ: khi xếp từng việc theo vai và phụ thuộc, đội hình LAB-1 cần 10 sprint, vì phần frontend chiếm khoảng 93 % năng lực của hai frontend mà màn chỉ dựng được khi API đã bắt đầu. Thêm một frontend toàn thời gian từ Sprint 1 thì kế hoạch vừa 9 sprint, nhưng không còn đệm; phần thêm là 550,4 giờ (68,8 MD) so với đội hình LAB-1. Kế hoạch sprint và rủi ro ở progress-report.md.
 
 ## 4. So với estimate LAB-1
 
