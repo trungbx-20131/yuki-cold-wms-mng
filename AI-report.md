@@ -108,7 +108,7 @@ Lượt xác nhận (một agent Opus, chỉ đọc vùng đã đổi) chấm 8,
 | Tiêu chí | LAB-4 (Takumi tối đa) | LAB-5 (Takumi tối thiểu) |
 |---|---|---|
 | Skill Takumi dùng | Nhiều skill quy trình và agent của bộ kit | 1 skill (`tkm:sun-estimate`), hỏi trước mỗi lần dùng (2 lần) |
-| Giờ có tương tác với AI | 24,0 giờ (17 phiên, 487 prompt) | _điền khi chốt giờ_ (mục 3.4) |
+| Giờ có tương tác với AI | 24,0 giờ (17 phiên, 487 prompt) | 9,0 giờ (7 phiên, 138 prompt; mục 3.4) |
 | Trường hợp ghi trong nhật ký AI | 406 (256 sửa) | 82 (42 sửa, 20 giữ, 6 bác, 8 góp ý review, 4 không theo hướng dẫn, 2 xin dùng Takumi) |
 | Số lượt review nội dung bằng agent | 5 lượt cho một gói, điểm không tăng | 4 lượt cho cả lab, có cổng dừng đặt trước |
 | Mức kiểm soát | Quy trình của kit quyết định nhiều bước | Mỗi bước do script hoặc người quyết; mọi số trên Project đọc lại được |
@@ -136,4 +136,12 @@ Hai lab khác loại việc (thiết kế chi tiết và chia task), nên bảng
 
 ### 3.4 Giờ làm thật
 
-_Chốt ở cuối phiên._
+Giờ lấy từ nhật ký thô do hook ghi tự động: khoảng giữa hai sự kiện liền nhau từ 20 phút trở xuống tính là đang làm, dài hơn tính là nghỉ. Cộng phút chưa làm tròn của cả ngày rồi mới làm tròn tới 0,5 giờ. Số liệu tính lúc 11:41 ngày 2026-10-13.
+
+| Tuần | Ngày | Phút chưa làm tròn | Giờ (làm tròn 0,5) | Ghi chú |
+|---|---|---|---|---|
+| 2026-W42 | 2026-10-12 | 397,80 | 6,5 | Chuẩn bị repo, đọc bộ LAB-4, chia task, dựng Project, chấm SWP, quy đổi sang giờ; đã bỏ 2,95 phút cập nhật bộ kit (không thuộc bài) |
+| 2026-W42 | 2026-10-13 | 147,59 | 2,5 | Xếp sprint, giả lập Sprint 1, báo cáo tiến độ, đóng gói, review; gồm 29,47 phút bù từ bản ghi hội thoại cho đoạn nhật ký bị hụt |
+| **Tổng** | | **545,39** | **9,0** | |
+
+Tổng làm tròn trên tổng phút (545,39 phút = 9,09 giờ → 9,0 giờ), bằng tổng hai dòng ngày. Đối chiếu: bản ghi hội thoại của ngày 2026-10-13 cho 155,89 phút hoạt động, cũng làm tròn 2,5 giờ. Giờ trên chỉ gồm lúc có tương tác với AI, chưa gồm thời gian người làm lab tự đọc và kiểm tra.

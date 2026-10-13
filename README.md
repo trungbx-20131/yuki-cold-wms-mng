@@ -18,6 +18,7 @@ Thuật ngữ: SWP (Standard Work Point) là điểm khối lượng chuẩn c�
 - Repo: https://github.com/trungbx-20131/yuki-cold-wms-mng
 - GitHub Project: https://github.com/users/trungbx-20131/projects/2
 - Báo cáo chấm SWP (HTML, xuất từ skill `tkm:sun-estimate`; tải về rồi mở bằng trình duyệt): [bao-cao-swp/sun-estimate-yuki-cold-wms-mng-20261012-1709.html](bao-cao-swp/sun-estimate-yuki-cold-wms-mng-20261012-1709.html)
+- Đã mở thử repo, GitHub Project và báo cáo HTML bằng cửa sổ ẩn danh (không đăng nhập).
 
 ## 3. Cấu trúc repo
 
