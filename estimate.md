@@ -53,8 +53,8 @@ Khi nhập điểm chốt, skill tự chọn ô Scope × Complexity gần đánh
 |---|---|---|---|---|
 | [#84](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/84) I-203 Dựng hàm kiểm cấm đảo ngày hạn dùng chung | 11 | 15 | 11–21 | vừa |
 | [#92](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/92) I-291 Làm rõ nghĩa quy tắc 1/3 với khách | 2,5 | 3 | 2–5 | cao |
-| [#93](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/93) I-292 Làm rõ khoá so cấm đảo ngày hạn theo khách hay điểm nhận | 2,5 | 3 | 2–5 | vừa |
-| [#97](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/97) I-296 Làm rõ gốc so của phép cấm đảo ngày hạn | 2,5 | 2,5 | 2–4 | cao |
+| [#93](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/93) I-292 Làm rõ đơn vị so sánh của cấm đảo ngày hạn: theo khách hay theo điểm nhận | 2,5 | 3 | 2–5 | vừa |
+| [#97](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/97) I-296 Làm rõ mốc so sánh của phép cấm đảo ngày hạn | 2,5 | 2,5 | 2–4 | cao |
 | [#135](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/135) I-495 Làm rõ mẫu tám báo cáo chưa dựng và quyền xem báo cáo với khách | 7,5 | 5 | 3,5–8 | vừa |
 | [#137](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/137) I-502 Sửa API cấu hình luật: bỏ ba route sửa thẳng ngưỡng nhiệt, loại hạn và quy tắc hợp đồng | 8 | 5 | 4–8 | cao |
 | [#138](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/138) I-503 Làm rõ cách xử lý SKU mới duyệt xong nhưng chưa có phiên bản loại hạn | 2,5 | 3 | 2–4,5 | cao |
@@ -81,8 +81,6 @@ Khi nhập điểm chốt, skill tự chọn ô Scope × Complexity gần đánh
 | [#287](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/287) I-501.4 Viết bộ kiểm thử cho màn cấu hình luật nghiệp vụ | 19,5 | 27,5 | 20–37 | vừa |
 | [#288](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/288) I-501.5 Dựng API phiên bản quy tắc cửa sổ hạn giao và bộ tham số giờ lái, HACCP | 21,5 | 18 | 13–24 | vừa |
 | [#289](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/289) I-501.6 Dựng giao diện khối cửa sổ hạn giao và hai bộ tham số cho màn cấu hình luật nghiệp vụ | 19,5 | 15,5 | 12–22 | vừa |
-
-Tiêu đề [I-292](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/93), [I-296](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/97) trên GitHub giữ tên cũ: `khoá so` nghĩa là đơn vị so sánh, `gốc so` nghĩa là mốc so sánh của phép cấm đảo ngày hạn.
 
 Issue mẫu ước giờ trực tiếp:
 

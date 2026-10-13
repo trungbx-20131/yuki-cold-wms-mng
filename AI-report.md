@@ -2,7 +2,7 @@
 
 Phạm vi: toàn bộ LAB-5 — chia task từ bộ thiết kế LAB-4, dựng GitHub Project, chấm SWP, quy đổi sang giờ, lập kế hoạch sprint, giả lập Sprint 1 và lập báo cáo tiến độ. Thực hiện 2026-10-12 → 2026-10-13 trên hai máy; công cụ chính là Claude Code.
 
-Mỗi trường hợp AI sai, được giữ nguyên hoặc bị bác đều được ghi vào nhật ký AI ngay khi xảy ra. Báo cáo này tổng hợp từ nhật ký đó: 80 trường hợp, gồm 41 trường hợp AI sai đã sửa, 20 trường hợp nghi sai nhưng kiểm tra xong vẫn giữ, 6 gợi ý bị bác, 8 góp ý của agent review, 4 trường hợp agent không theo đúng hướng dẫn quy trình (vd viết tin nhắn kết thúc bằng tiếng Đức, ghi file nháp ra ngoài chỗ được phép) và 1 lần xin dùng skill Takumi.
+Mỗi trường hợp AI sai, được giữ nguyên hoặc bị bác đều được ghi vào nhật ký AI ngay khi xảy ra. Báo cáo này tổng hợp từ nhật ký đó: 82 trường hợp, gồm 42 trường hợp AI sai đã sửa, 20 trường hợp nghi sai nhưng kiểm tra xong vẫn giữ, 6 gợi ý bị bác, 8 góp ý của agent review, 4 trường hợp agent không theo đúng hướng dẫn quy trình (vd viết tin nhắn kết thúc bằng tiếng Đức, ghi file nháp ra ngoài chỗ được phép) và 2 lần xin dùng skill Takumi.
 
 Thuật ngữ dùng trong báo cáo: **work item** là một epic, issue hoặc sub-issue trên GitHub Project; **leaf task** là issue hoặc sub-issue không có sub-issue con, nơi ghi SWP và giờ; **SWP** (Standard Work Point) là điểm khối lượng chuẩn của một việc; **DoD** (Definition of Done) là điều kiện để coi một issue là xong; **nhóm epic** là một trong 6 nhóm epic của backlog (nền tảng, nhập kho và tồn kho, xuất kho, lập tuyến và giờ lái, nhiệt độ – truy xuất – báo cáo, quản trị; bảng ở [task-breakdown.md](task-breakdown.md) mục 1.5).
 
@@ -14,7 +14,7 @@ Thuật ngữ dùng trong báo cáo: **work item** là một epic, issue hoặc 
 
 - Mặc định không dùng skill hay agent Takumi. Mọi việc làm bằng công cụ cơ bản của Claude Code (đọc, sửa, chạy lệnh), agent `general-purpose`, `gh` CLI, GraphQL của GitHub và script Python viết riêng cho bài.
 - Muốn dùng một skill Takumi thì phải hỏi người làm lab trước, nêu dùng gì, để làm gì, vì sao làm tay không đủ.
-- Chỉ một skill được duyệt: **`tkm:sun-estimate`** ở bước chấm SWP, vì đề yêu cầu chấm bằng skill.
+- Chỉ một skill được duyệt: **`tkm:sun-estimate`** ở bước chấm SWP, vì đề yêu cầu chấm bằng skill. Cuối bài dùng lại skill này một lần để xuất lại báo cáo HTML với câu chữ dễ hiểu hơn (không chấm lại, điểm số giữ nguyên).
 - Skill chấm SWP gợi ý nạp thêm hai skill phụ (chấm độ tin cậy, tra cứu chuyên gia). Không nạp, vì skill đã có sẵn định nghĩa độ tin cậy riêng để dùng khi thiếu hai skill này.
 
 ### 1.2 Cách giao việc cho agent
@@ -107,9 +107,9 @@ Lượt xác nhận (một agent Opus, chỉ đọc vùng đã đổi) chấm 8,
 
 | Tiêu chí | LAB-4 (Takumi tối đa) | LAB-5 (Takumi tối thiểu) |
 |---|---|---|
-| Skill Takumi dùng | Nhiều skill quy trình và agent của bộ kit | 1 skill (`tkm:sun-estimate`), hỏi trước khi dùng |
+| Skill Takumi dùng | Nhiều skill quy trình và agent của bộ kit | 1 skill (`tkm:sun-estimate`), hỏi trước mỗi lần dùng (2 lần) |
 | Giờ có tương tác với AI | 24,0 giờ (17 phiên, 487 prompt) | _điền khi chốt giờ_ (mục 3.4) |
-| Trường hợp ghi trong nhật ký AI | 406 (256 sửa) | 80 (41 sửa, 20 giữ, 6 bác, 8 góp ý review, 4 không theo hướng dẫn, 1 xin dùng Takumi) |
+| Trường hợp ghi trong nhật ký AI | 406 (256 sửa) | 82 (42 sửa, 20 giữ, 6 bác, 8 góp ý review, 4 không theo hướng dẫn, 2 xin dùng Takumi) |
 | Số lượt review nội dung bằng agent | 5 lượt cho một gói, điểm không tăng | 4 lượt cho cả lab, có cổng dừng đặt trước |
 | Mức kiểm soát | Quy trình của kit quyết định nhiều bước | Mỗi bước do script hoặc người quyết; mọi số trên Project đọc lại được |
 
