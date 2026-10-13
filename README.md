@@ -1,3 +1,65 @@
-# yuki-cold-wms-mng
+# Yuki Cold WMS — backlog, ước lượng và tiến độ
 
-Đang dựng — nội dung đầy đủ sẽ có ở bản nộp.
+- **Dự án:** Yuki Cold WMS — hệ thống quản lý kho lạnh ba dải nhiệt cho Yuki Cold Logistics
+- **Mã học viên:** MHV-TRUNGX
+- **Đề:** Product B — Yuki Cold Logistics, kho lạnh ba dải nhiệt
+
+## 1. Tổng quan
+
+- Backlog break từ bộ thiết kế chi tiết LAB-4 bản nộp ngày **2026-10-09**.
+- PREMISE.md **có thay đổi** so với LAB-4: 10 spec thêm/bỏ/sửa, 21 giả định bổ sung, 3 hướng đã chốt.
+- Backlog trên GitHub Project: **26 epic**, 144 issue, 173 sub-issue.
+- Sprint giả lập đã chạy: **Sprint 1** (2026-11-30 → 2026-12-11); báo cáo ở [progress-report.md](progress-report.md).
+
+## 2. Link
+
+- Repo: https://github.com/trungbx-20131/yuki-cold-wms-mng
+- GitHub Project: https://github.com/users/trungbx-20131/projects/2
+- Báo cáo chấm SWP (HTML, xuất từ skill): [bao-cao-swp/sun-estimate-yuki-cold-wms-mng-20261012-1709.html](bao-cao-swp/sun-estimate-yuki-cold-wms-mng-20261012-1709.html)
+
+## 3. Cấu trúc repo
+
+| File/thư mục | Nội dung |
+|---|---|
+| [README.md](README.md) | Tệp này: định danh bài, tổng quan, link, cấu trúc repo, bảng spec → epic |
+| [PREMISE.md](PREMISE.md) | Tiền đề: backlog khác bộ thiết kế LAB-4 ở đâu (spec thêm/bỏ/sửa, giả định bổ sung, hướng đã chốt) |
+| [task-breakdown.md](task-breakdown.md) | Nguyên tắc chia task, bảng spec → issue, việc chịu ràng buộc giờ lái 2024, chỗ hở của spec |
+| [estimate.md](estimate.md) | Chấm SWP, issue mẫu đã kiểm, cách quy giờ, tổng theo epic, so với estimate LAB-1 |
+| [progress-report.md](progress-report.md) | Báo cáo tiến độ Sprint 1: trạng thái, burndown, rủi ro trễ |
+| [AI-report.md](AI-report.md) | Cách dùng AI: skill và prompt, cách review output của AI, điểm đặc biệt |
+| [bao-cao-swp/](bao-cao-swp/) | Báo cáo chấm SWP dạng HTML, xuất từ skill (mở trực tiếp bằng trình duyệt) |
+| [anh/](anh/) | Ảnh dùng trong báo cáo (biểu đồ burndown Sprint 1) |
+| [.gitignore](.gitignore) | Bỏ qua tệp tạm của hệ điều hành và trình soạn thảo |
+
+## 4. Spec → epic
+
+Spec là màn (`SCR-…`) hoặc tài liệu nền tảng của bộ thiết kế LAB-4, đảo chiều từ bảng spec → issue của [task-breakdown.md](task-breakdown.md) mục 2; chi tiết tới từng issue ở đó.
+
+| Spec | Epic trên Project | Ghi chú |
+|---|---|---|
+| adr/ADR-003-ghi-nhieu-buoc-trong-ham-postgres.md; adr/ADR-004-phan-quyen-o-tang-api.md; _common/api-list.md §2 (EP-01…EP-49); architecture/thanh-phan.mmd; architecture/kien-truc.md §1; architecture/kien-truc.md §11; database-diagram/migration-list.txt; schema-live.txt; schema-live.json; giai-thich-lech.json | [#1](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/1) — Dựng hạ tầng, môi trường và vận hành | 4 issue, 0 sub-issue |
+| adr/ADR-001-delivery-history-bat-bien.md; adr/ADR-002-nguong-va-gio-lai-la-cau-hinh.md; database-diagram/erd-thiet-ke-dich-nguoi-dung-cau-hinh.mmd; database-diagram/erd-thiet-ke-dich-xuat-tuyen.mmd; database-diagram/erd-thiet-ke-dich-bao-cao.mmd; database-diagram/erd-thiet-ke-dich-chat-luong-truy-xuat.mmd; database-diagram/erd-thiet-ke-dich-nhiet.mmd; database-diagram/erd-thiet-ke-dich-nhap-ton.mmd; architecture/kien-truc.md §4; architecture/kien-truc.md §3.7; architecture/kien-truc.md §3.8; architecture/kien-truc.md §9; architecture/kien-truc.md §10; database-diagram/schema-that.md; database-diagram/erd-thiet-ke-dich-tong.mmd; database-diagram/chenh-lech-thiet-ke-prototype.md; system-design/database-design/receiving-inventory/RCV_INV_DB.md; system-design/database-design/outbound-routing/OUT_ROUTE_DB.md; system-design/database-design/temperature-haccp/TEMP_HACCP_DB.md; system-design/database-design/quality-traceability/QUAL_TRACE_DB.md; system-design/database-design/admin-settings/ADMIN_SET_DB.md; system-design/database-design/reporting/RPT_DB.md; premise/gia-tri-nghiep-vu.md | [#6](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/6) — Dựng dữ liệu nền: schema đích và dữ liệu khởi tạo | 10 issue, 9 sub-issue |
+| SCR-INT-01 Bảng theo dõi tích hợp ngoài (mức B); SCR-SEC-01 Đăng nhập (mức B); adr/ADR-003-ghi-nhieu-buoc-trong-ham-postgres.md; adr/ADR-004-phan-quyen-o-tang-api.md; database-diagram/erd-thiet-ke-dich-nguoi-dung-cau-hinh.mmd; _common/api-list.md §2 (EP-01…EP-49); _common/api-list.md §5; architecture/thanh-phan.mmd; architecture/kien-truc.md §1; architecture/kien-truc.md §1.2; architecture/diem-tich-hop.mmd; architecture/kien-truc.md:143; architecture/kien-truc.md §3.7; architecture/kien-truc.md §9; _common/error-codes.md; _common/hop-dong-api-prototype.md; database-diagram/ma-tran-quyen-that.md; premise/cau-hoi-khach-bo-sung-lab4.md; wireframe/index.md | [#7](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/7) — Dựng khung ứng dụng, phân quyền và audit | 12 issue, 0 sub-issue |
+| SCR-TEMP-02 Bảng theo dõi nhiệt & hàng đợi alarm (mức A); adr/ADR-002-nguong-va-gio-lai-la-cau-hinh.md; architecture/luong-1-nhap-hang-kiem-nhiet-cach-ly.mmd; architecture/luong-5-csv-nhiet-alarm-sai-lech-haccp.mmd; _common/api-list.md §4; PREMISE.md của LAB-4; architecture/diem-tich-hop.mmd; architecture/kien-truc.md:146; architecture/kien-truc.md §3.8; architecture/kien-truc.md §11 | [#8](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/8) — Dựng job nền và hàm nghiệp vụ dùng chung | 7 issue, 7 sub-issue |
+| SCR-OUT-01 Danh sách đơn xuất (mức B); SCR-TEMP-02 Bảng theo dõi nhiệt & hàng đợi alarm (mức A); architecture/diem-tich-hop.mmd; architecture/kien-truc.md:144; architecture/kien-truc.md:147; architecture/kien-truc.md:148; premise/cau-hoi-khach-bo-sung-lab4.md | [#9](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/9) — Dựng tích hợp ngoài và thông báo | 8 issue, 0 sub-issue |
+| SCR-TRC-01 Tra ngược nguồn gốc (mức A); architecture/kien-truc.md §11; premise/cau-hoi-khach-bo-sung-lab4.md | [#323](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/323) — Kiểm chứng phi chức năng và kiểm thử hệ thống | Kiểm chứng phi chức năng (tải, WCAG 2.2, khôi phục, bảo mật) và kiểm thử hệ thống; bổ sung khi so estimate với LAB-1 (14 issue, 6 sub-issue) |
+| SCR-REC-01 Danh sách lịch hẹn nhập (mức B); SCR-REC-02 Kiểm hàng nhập từng dòng (mức A); SCR-INV-07 Kiểm nhiệt & tạo sai lệch khi nhập/xuất (mức A); _common/api-list.md §3.1; PREMISE.md của LAB-4 | [#10](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/10) — Dựng lịch hẹn nhập và nhận hàng có kiểm nhiệt | 4 issue, 12 sub-issue |
+| SCR-REC-03 Xử lý accept/reject/hold (mức A); _common/api-list.md §3.1; PREMISE.md của LAB-4 | [#11](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/11) — Dựng phân tách số lượng nhận và duyệt chênh lệch | 2 issue, 5 sub-issue |
+| SCR-INV-01 Tồn kho theo vị trí & dải nhiệt (mức B); SCR-INV-02 Cất kho (gợi ý vị trí) (mức B); SCR-INV-06 Tra cứu tồn đa tiêu chí (mức B); _common/api-list.md §3.1; PREMISE.md của LAB-4 | [#12](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/12) — Dựng tra cứu tồn kho và cất kho | 4 issue, 4 sub-issue |
+| SCR-INV-02 Cất kho (gợi ý vị trí) (mức B); SCR-INV-03 Cách ly / giải phóng / tiêu huỷ (mức A); _common/api-list.md §3.1; PREMISE.md của LAB-4 | [#13](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/13) — Dựng vòng trạng thái lô: cách ly, giải phóng, tiêu huỷ | 1 issue, 4 sub-issue |
+| SCR-INV-04 Kiểm kê mù (mức B); SCR-INV-05 Điều chỉnh chênh lệch (mức A); _common/api-list.md §3.1 | [#14](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/14) — Dựng kiểm kê mù và điều chỉnh chênh lệch | 4 issue, 7 sub-issue |
+| SCR-OUT-01 Danh sách đơn xuất (mức B); SCR-OUT-02 Phân bổ + lý do loại trừ (mức A); SCR-OUT-04 Kiểm & nạp xe (mức A); SCR-OUT-05 Ghi nhận POD (mức A); SCR-MST-04 Tra cứu lịch sử giao hàng (mức B); architecture/luong-2-phan-bo-cong-dau-6-buoc.mmd; architecture/luong-3-nap-xe-pod-ghi-lich-su-giao.mmd; _common/api-list.md §3.2; PREMISE.md của LAB-4 | [#15](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/15) — Dựng đơn xuất và phân bổ | 6 issue, 8 sub-issue |
+| SCR-OUT-02 Phân bổ + lý do loại trừ (mức A); SCR-OUT-03 Danh sách phiếu soạn hàng (mức B); SCR-OUT-04 Kiểm & nạp xe (mức A); SCR-OUT-05 Ghi nhận POD (mức A); architecture/luong-2-phan-bo-cong-dau-6-buoc.mmd; architecture/luong-3-nap-xe-pod-ghi-lich-su-giao.mmd; _common/api-list.md §3.2; PREMISE.md của LAB-4 | [#16](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/16) — Dựng soạn hàng và nạp xe | 4 issue, 6 sub-issue |
+| SCR-OUT-05 Ghi nhận POD (mức A); architecture/luong-2-phan-bo-cong-dau-6-buoc.mmd; architecture/luong-3-nap-xe-pod-ghi-lich-su-giao.mmd; _common/api-list.md §3.2; PREMISE.md của LAB-4 | [#17](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/17) — Dựng giao hàng và ghi nhận giao hàng (POD) | 1 issue, 5 sub-issue |
+| SCR-OUT-02 Phân bổ + lý do loại trừ (mức A); SCR-OUT-05 Ghi nhận POD (mức A); SCR-OUT-06 Khiếu nại / trả hàng (mức B); SCR-MST-04 Tra cứu lịch sử giao hàng (mức B); _common/api-list.md §3.2 | [#18](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/18) — Dựng lịch sử giao, sự kiện đảo và khiếu nại | 6 issue, 4 sub-issue |
+| SCR-SCH-01 Lập tuyến giao hàng (mức A); SCR-SCH-02 Kiểm năm nhóm ràng buộc thời gian làm việc tài xế (mức A); SCR-SCH-03 Lịch trình tài xế (mức B); SCR-SCH-04 Ghi sự cố ngoài dự kiến (mức B); _common/api-list.md §3.2; PREMISE.md của LAB-4 | [#19](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/19) — Dựng lập tuyến và lịch trình tài xế | 4 issue, 10 sub-issue |
+| SCR-SCH-01 Lập tuyến giao hàng (mức A); SCR-SCH-02 Kiểm năm nhóm ràng buộc thời gian làm việc tài xế (mức A); SCR-SCH-03 Lịch trình tài xế (mức B); SCR-SCH-05 Sổ giờ tích lũy của tài xế (mức A); SCR-EXP-01 Cấu hình luật hạn, cửa sổ hạn giao & ngưỡng nhiệt (mức A); SCR-SEC-04 Chính sách lưu giữ, legal hold, purge (mức A); architecture/luong-4-phat-hanh-tuyen-gio-lai-2024.mmd; _common/api-list.md §3.2; PREMISE.md của LAB-4 | [#20](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/20) — Ràng buộc giờ lái 2024 | Ràng buộc đặc thù của đề: giới hạn giờ lái xe tải từ 4/2024 (改善基準告示 sửa đổi), tách thành epic riêng — task-breakdown.md phần 3 (18 issue, 6 sub-issue) |
+| SCR-TEMP-01 Nạp CSV datalogger (mức A); SCR-TEMP-02 Bảng theo dõi nhiệt & hàng đợi alarm (mức A); SCR-TEMP-04 Bảng đầy đủ hồ sơ HACCP (mức A); SCR-TRC-03 Soạn & duyệt thông báo thu hồi (mức A); _common/api-list.md §3.3; _common/api-list.md §3.4; _common/api-list.md §3.6; architecture/diem-tich-hop.mmd; architecture/kien-truc.md:146 | [#21](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/21) — Dựng theo dõi nhiệt độ và hàng đợi alarm | 5 issue, 8 sub-issue |
+| SCR-TEMP-02 Bảng theo dõi nhiệt & hàng đợi alarm (mức A); SCR-TEMP-03 Hồ sơ sai lệch (deviation/HACCP) (mức A); SCR-TEMP-04 Bảng đầy đủ hồ sơ HACCP (mức A); _common/api-list.md §3.3; _common/api-list.md §3.4; _common/api-list.md §3.6; PREMISE.md của LAB-4 | [#22](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/22) — Dựng hồ sơ sai lệch và hồ sơ HACCP | 4 issue, 12 sub-issue |
+| SCR-TRC-01 Tra ngược nguồn gốc (mức A); SCR-TRC-02 Bảng case thu hồi + đối soát (mức A); SCR-TRC-03 Soạn & duyệt thông báo thu hồi (mức A); architecture/luong-6-truy-xuat-3-lan-thu-hoi.mmd; _common/api-list.md §3.3; _common/api-list.md §3.4; _common/api-list.md §3.6 | [#23](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/23) — Dựng truy xuất và thu hồi | 3 issue, 14 sub-issue |
+| SCR-RPT-01 Trung tâm báo cáo (mức B); SCR-RPT-02 Xuất bằng chứng audit (mức A); _common/api-list.md §3.3; _common/api-list.md §3.4; _common/api-list.md §3.6 | [#24](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/24) — Dựng báo cáo và gói bằng chứng audit | 3 issue, 7 sub-issue |
+| SCR-EXP-01 Cấu hình luật hạn, cửa sổ hạn giao & ngưỡng nhiệt (mức A); SCR-MST-01 Danh sách dữ liệu chủ (mức B); SCR-MST-02 Chi tiết & chỉnh sửa master (mức A); _common/api-list.md §3.5 | [#25](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/25) — Dựng cấu hình luật nghiệp vụ | 5 issue, 6 sub-issue |
+| SCR-MST-01 Danh sách dữ liệu chủ (mức B); SCR-MST-02 Chi tiết & chỉnh sửa master (mức A); SCR-MST-03 Hàng đợi duyệt master (mức A); _common/api-list.md §3.5 | [#26](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/26) — Dựng quản lý dữ liệu chủ | 7 issue, 16 sub-issue |
+| SCR-MIG-01 Bảng điều khiển migration (mức A); SCR-INT-01 Bảng theo dõi tích hợp ngoài (mức B); _common/api-list.md §3.5 | [#27](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/27) — Dựng chuyển dữ liệu và theo dõi tích hợp | 3 issue, 8 sub-issue |
+| SCR-SEC-01 Đăng nhập (mức B); SCR-SEC-02 Quản lý người dùng & vai trò (mức B); SCR-SEC-03 Nhật ký audit (mức B); _common/api-list.md §3.5 | [#28](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/28) — Dựng người dùng, vai trò và nhật ký audit | 3 issue, 2 sub-issue |
+| SCR-SEC-04 Chính sách lưu giữ, legal hold, purge (mức A); _common/api-list.md §3.5 | [#29](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/29) — Dựng lưu giữ dữ liệu, legal hold và purge | 2 issue, 7 sub-issue |
