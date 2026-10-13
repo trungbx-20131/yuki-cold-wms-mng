@@ -15,6 +15,7 @@ Việc không dùng Takumi ở LAB-5 là **chủ ý của người làm lab**: m
 - Mặc định không dùng skill hay agent Takumi. Mọi việc làm bằng công cụ cơ bản của Claude Code (đọc, sửa, chạy lệnh), agent `general-purpose`, `gh` CLI, GraphQL của GitHub và script Python viết riêng cho bài.
 - Muốn dùng một skill Takumi thì phải hỏi người làm lab trước, nêu dùng gì, để làm gì, vì sao làm tay không đủ.
 - Chỉ một skill được duyệt: **`tkm:sun-estimate`** ở bước chấm SWP, vì đề yêu cầu chấm bằng skill. Cuối bài dùng lại skill này một lần để xuất lại báo cáo HTML với câu chữ dễ hiểu hơn (không chấm lại, điểm số giữ nguyên).
+- **Skill tự viết** ([skills/quy-swp-ra-gio-va-ghi-project](skills/quy-swp-ra-gio-va-ghi-project/SKILL.md)): nối tiếp `tkm:sun-estimate`, quy đổi SWP đã chốt ra giờ theo hệ số nhóm việc (lấy từ issue mẫu ước giờ không xem SWP), xử lý ngoại lệ ước trực tiếp và ghi SWP, giờ lên GitHub Project có đọc lại. Skill được đóng gói ở cuối bài từ các script đã dùng trong lúc làm, viết lại dạng nhận tham số để dùng cho dự án khác; chạy thử trên dữ liệu của bài tái tạo đúng 1165 SWP và 4.024 giờ, khớp 343/343 work item.
 - Skill chấm SWP gợi ý nạp thêm hai skill phụ (chấm độ tin cậy, tra cứu chuyên gia). Không nạp, vì skill đã có sẵn định nghĩa độ tin cậy riêng để dùng khi thiếu hai skill này.
 
 ### 1.2 Cách giao việc cho agent
