@@ -8,7 +8,7 @@ Thuật ngữ: SWP (Standard Work Point) là điểm khối lượng chuẩn c�
 
 ## 1. Tổng quan
 
-- Backlog break từ bộ thiết kế chi tiết LAB-4 bản nộp ngày **2026-10-09**.
+- Backlog được chia từ bộ thiết kế chi tiết LAB-4 bản nộp ngày **2026-10-09**.
 - PREMISE.md **có thay đổi** so với LAB-4: 10 spec thêm/bỏ/sửa, 21 giả định bổ sung, 3 hướng đã chốt.
 - Backlog trên GitHub Project: **26 epic**, 144 issue, 173 sub-issue.
 - Sprint giả lập đã chạy: **Sprint 1** (2026-11-30 → 2026-12-11); báo cáo ở [progress-report.md](progress-report.md).
@@ -17,7 +17,7 @@ Thuật ngữ: SWP (Standard Work Point) là điểm khối lượng chuẩn c�
 
 - Repo: https://github.com/trungbx-20131/yuki-cold-wms-mng
 - GitHub Project: https://github.com/users/trungbx-20131/projects/2
-- Báo cáo chấm SWP (HTML, xuất từ skill): [bao-cao-swp/sun-estimate-yuki-cold-wms-mng-20261012-1709.html](bao-cao-swp/sun-estimate-yuki-cold-wms-mng-20261012-1709.html)
+- Báo cáo chấm SWP (HTML, xuất từ skill `tkm:sun-estimate`; tải về rồi mở bằng trình duyệt): [bao-cao-swp/sun-estimate-yuki-cold-wms-mng-20261012-1709.html](bao-cao-swp/sun-estimate-yuki-cold-wms-mng-20261012-1709.html)
 
 ## 3. Cấu trúc repo
 
@@ -29,13 +29,13 @@ Thuật ngữ: SWP (Standard Work Point) là điểm khối lượng chuẩn c�
 | [estimate.md](estimate.md) | Chấm SWP, issue mẫu đã kiểm, cách quy giờ, tổng theo epic, so với estimate LAB-1 |
 | [progress-report.md](progress-report.md) | Báo cáo tiến độ Sprint 1: trạng thái, burndown, rủi ro trễ |
 | [AI-report.md](AI-report.md) | Cách dùng AI: skill và prompt, cách review output của AI, điểm đặc biệt |
-| [bao-cao-swp/](bao-cao-swp/) | Báo cáo chấm SWP dạng HTML, xuất từ skill (mở trực tiếp bằng trình duyệt) |
+| [bao-cao-swp/](bao-cao-swp/) | Báo cáo chấm SWP dạng HTML, xuất từ công cụ chấm SWP (skill `tkm:sun-estimate`); tải về rồi mở bằng trình duyệt |
 | [anh/](anh/) | Ảnh dùng trong báo cáo (biểu đồ burndown Sprint 1) |
 | [.gitignore](.gitignore) | Bỏ qua tệp tạm của hệ điều hành và trình soạn thảo |
 
 ## 4. Spec → epic
 
-Spec là màn (`SCR-…`) hoặc tài liệu nền tảng của bộ thiết kế LAB-4, đảo chiều từ bảng spec → issue của [task-breakdown.md](task-breakdown.md) mục 2; chi tiết tới từng issue ở đó.
+Spec là màn hình (`SCR-…`) hoặc tài liệu nền tảng của bộ thiết kế LAB-4, đảo chiều từ bảng spec → issue của [task-breakdown.md](task-breakdown.md) mục 2; chi tiết tới từng issue ở đó. Cột Spec là truy vết đầy đủ nên một số ô dài. Mức A: màn hình mang luật nghiệp vụ riêng; mức B: màn hình không mang luật riêng (phân loại của bộ thiết kế LAB-4).
 
 | Spec | Epic trên Project | Ghi chú |
 |---|---|---|

@@ -2,15 +2,15 @@
 
 Báo cáo chấm SWP (HTML): [bao-cao-swp/sun-estimate-yuki-cold-wms-mng-20261012-1709.html](bao-cao-swp/sun-estimate-yuki-cold-wms-mng-20261012-1709.html)
 
-Thuật ngữ: SWP (Standard Work Point) là điểm khối lượng chuẩn của một việc; MD là ngày công (1 MD = 8 giờ); DoD là định nghĩa xong của issue; BrSE là kỹ sư cầu nối với khách Nhật; UAT là kiểm thử chấp nhận do khách thực hiện; BCP là kế hoạch duy trì hoạt động khi có sự cố; FEFO là xuất lô hết hạn trước; HACCP là hệ thống kiểm soát mối nguy an toàn thực phẩm (bắt buộc ở Nhật từ 6/2021); POD là xác nhận giao hàng tại điểm nhận; legal hold là giữ dữ liệu không cho xoá vì lý do pháp lý; purge là xoá dữ liệu hết hạn lưu giữ. Mã `E-nn`, `I-nnn` dẫn tới issue trên GitHub.
+Thuật ngữ: SWP (Standard Work Point) là điểm khối lượng chuẩn của một việc; leaf task là issue hoặc sub-issue không có sub-issue con, nơi ghi SWP và giờ; buffer là phần năng lực còn trống để đỡ trễ; MD là ngày công (1 MD = 8 giờ); DoD là định nghĩa xong của issue; BrSE là kỹ sư cầu nối với khách Nhật; UAT là kiểm thử chấp nhận do khách thực hiện; BCP là kế hoạch duy trì hoạt động khi có sự cố; FEFO là xuất lô hết hạn trước; HACCP là hệ thống kiểm soát mối nguy an toàn thực phẩm (bắt buộc ở Nhật từ 6/2021); POD là xác nhận giao hàng tại điểm nhận; legal hold là giữ dữ liệu không cho xoá vì lý do pháp lý; purge là xoá dữ liệu hết hạn lưu giữ. Mã `E-nn`, `I-nnn` dẫn tới issue trên GitHub.
 
-Backlog có 268 việc lá được chấm; epic và issue cha lấy tổng SWP của việc con. Tổng sau khi kiểm issue mẫu: **1165 SWP** (skill chấm ban đầu 1177 SWP).
+Backlog có 268 leaf task được chấm; epic và issue cha lấy tổng SWP của việc con. Tổng sau khi kiểm issue mẫu: **1165 SWP** (skill chấm ban đầu 1177 SWP).
 
 ## 1. Issue mẫu được kiểm
 
-Skill chọn 5 issue mẫu theo quy tắc cố định (nhỏ nhất, trung vị, lớn nhất, lệch xa trung vị, độ tin cậy thấp nhất). Mỗi issue được đối chiếu với định nghĩa xong (DoD) và spec nguồn, rồi chốt mức khó và điểm. Scope là độ rộng công việc (1, 2, 3, 5, 8, 13), Complexity là độ khó bên trong (0, 1, 2, 3, 5, 8); SWP tra từ bảng cố định Scope × Complexity.
+Công cụ chấm (skill `tkm:sun-estimate`) chọn 5 issue mẫu theo quy tắc cố định (nhỏ nhất, trung vị, lớn nhất, lệch xa trung vị, độ tin cậy thấp nhất). Mỗi issue được đối chiếu với định nghĩa xong (DoD) và spec nguồn, rồi chốt mức khó và điểm. Scope là độ rộng công việc (1, 2, 3, 5, 8, 13), Complexity là độ khó bên trong (0, 1, 2, 3, 5, 8); SWP tra từ bảng cố định Scope × Complexity.
 
-| Issue | Vì sao được chọn | Skill chấm: Scope × Complexity → SWP | Bạn chốt | Lý do |
+| Issue | Vì sao được chọn | Skill chấm: Scope × Complexity → SWP | Điểm chốt sau kiểm tra | Lý do |
 |---|---|---|---|---|
 | [#44](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/44) I-034 — Dựng hàm chặn người đề xuất tự duyệt bản ghi của chính mình | issue nhỏ nhất | 1 × 1 → 1 | 1 × 1 → 1 | Giữ 1: DoD chỉ có một phép so người lập với người duyệt và một mã lỗi; việc gắn hàm vào từng luồng duyệt nằm ở issue của luồng đó. |
 | [#234](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/234) I-302.2 — Dựng giao diện màn lịch trình tài xế và phiên bản tuyến | mức trung vị | 3 × 1 → 4 | 3 × 1 → 4 | Giữ 4: một màn nhiều biến thể nhưng chỉ hiển thị kết quả API trả về; phần kiểm giờ lái thuộc issue riêng trong epic giờ lái. |
@@ -29,25 +29,25 @@ Skill chọn 5 issue mẫu theo quy tắc cố định (nhỏ nhất, trung vị
 | [#158](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/158) I-011.1 — Tạo migration sửa bảng prototype miền nhiệt độ và hồ sơ HACCP | 8 | 6 |
 | [#162](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/162) I-016.1 — Tạo migration bảng người dùng, audit và hàng đợi thông báo | 5 | 4 |
 
-Khi chốt một điểm, skill tự quy điểm về ô Scope × Complexity gần đánh giá ban đầu nhất (ít bậc dịch nhất); vì vậy điểm 10 của issue mẫu migration được ghi là độ khó hạ một bậc.
+Khi nhập điểm chốt, skill tự chọn ô Scope × Complexity gần đánh giá ban đầu nhất. Vì vậy điểm 10 của issue mẫu migration (#160) được ghi thành Scope 8 × Complexity 1, tức hạ một bậc độ khó; các issue cùng nhóm ở bảng trên cũng hạ một bậc độ khó.
 
 ## 2. Cách quy ra giờ
 
-**Cách chọn:** quy ước đổi SWP ra giờ, hệ số theo nhóm việc, lấy từ issue mẫu ước giờ trực tiếp.
+**Cách chọn:** giờ = SWP × hệ số của nhóm việc; hệ số lấy từ 10 issue mẫu được ước giờ trực tiếp.
 
-**Vì sao:** một hệ số áp cho mọi issue giữ được nhất quán và kiểm lại được bằng phép nhân, thay vì ước tay 268 việc lá. Hệ số lấy từ 10 issue mẫu trải đều các mức SWP và loại việc, được ước giờ trực tiếp từ nội dung issue mà không xem SWP, nên hệ số không bị điểm kéo theo. Mẫu cho thấy giao diện và kiểm thử tốn khoảng 1,8 lần giờ mỗi SWP so với backend, nên dùng hệ số theo nhóm thay vì một hệ số chung.
+**Vì sao:** một hệ số áp cho mọi issue giữ được nhất quán và kiểm lại được bằng phép nhân, thay vì ước tay 268 leaf task. Hệ số lấy từ 10 issue mẫu trải đều các mức SWP và loại việc, được ước giờ trực tiếp từ nội dung issue mà không xem SWP, nên hệ số không bị điểm kéo theo. Mẫu cho thấy giao diện và kiểm thử tốn khoảng 1,8 lần giờ mỗi SWP so với backend, nên dùng hệ số theo nhóm thay vì một hệ số chung.
 
-**Quy tắc:** hệ số nhóm = tổng giờ ước trực tiếp của mẫu trong nhóm ÷ tổng SWP của các mẫu đó. Giờ việc lá = SWP × hệ số nhóm, làm tròn 0,5 giờ (tối thiểu 0,5); epic và issue cha = tổng giờ việc con. Giờ là công làm của một người đúng vai: đọc spec, làm, tự kiểm theo định nghĩa xong, sửa sau review — không gồm dự phòng, chờ khách trả lời, quản lý dự án.
+**Quy tắc:** hệ số nhóm = tổng giờ ước trực tiếp của mẫu trong nhóm ÷ tổng SWP của các mẫu đó. Giờ leaf task = SWP × hệ số nhóm, làm tròn 0,5 giờ (tối thiểu 0,5); epic và issue cha = tổng giờ việc con. Giờ là công làm của một người đúng vai: đọc spec, làm, tự kiểm theo định nghĩa xong, sửa sau review — không gồm dự phòng, chờ khách trả lời, quản lý dự án.
 
-**Áp dụng nhất quán:** một script tính giờ cho mọi việc lá từ SWP đã chốt (trừ các ngoại lệ ước trực tiếp nêu dưới bảng) và ghi lên trường giờ ước lượng của Project; đọc lại trường này so với bảng giờ, lệch 0.
+**Áp dụng nhất quán:** một script tính giờ cho mọi leaf task từ SWP đã chốt (trừ các ngoại lệ ước trực tiếp nêu dưới bảng) và ghi lên trường giờ ước lượng của Project; đọc lại trường này so với bảng giờ, lệch 0.
 
-| Nhóm việc | Hệ số (giờ/SWP) | Việc lá | SWP | Giờ |
+| Nhóm việc | Hệ số (giờ/SWP) | Leaf task | SWP | Giờ |
 |---|---|---|---|---|
 | Backend, DB, hạ tầng, tích hợp | 2,69 | 147 | 724 | 2.008 |
 | Giao diện và kiểm thử | 4,86 | 91 | 390 | 1.889 |
 | Làm rõ với khách | 2,5 | 30 | 51 | 127 |
 
-**Ngoại lệ:** 30 việc lá của ba epic có chênh lớn nhất với estimate LAB-1 ([E-21](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/15), [E-51](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/25), [E-44](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/24)) được ước lại trực tiếp từng việc, theo từng bước (đọc spec, làm, kiểm thử theo định nghĩa xong, sửa sau review), không xem SWP và giờ cũ. Giờ ước trực tiếp thay giờ quy từ SWP: 399 giờ → 448,5 giờ (khoảng 328,5–622,5 giờ). Việc có độ tin cậy thấp là chỗ spec còn để ngỏ, nêu ở rủi ro của progress-report.md.
+**Ngoại lệ:** 30 leaf task của ba epic có chênh lớn nhất với estimate LAB-1 ([E-21](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/15), [E-51](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/25), [E-44](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/24)) được ước lại trực tiếp từng việc, theo từng bước (đọc spec, làm, kiểm thử theo định nghĩa xong, sửa sau review), không xem SWP và giờ cũ. Giờ ước trực tiếp thay giờ quy từ SWP: 399 giờ → 448,5 giờ (khoảng 328,5–622,5 giờ). Việc có độ tin cậy thấp là chỗ spec còn để ngỏ, nêu ở rủi ro của progress-report.md.
 
 | Việc | Giờ quy từ SWP | Giờ ước trực tiếp | Khoảng | Độ tin cậy |
 |---|---|---|---|---|
@@ -99,7 +99,7 @@ Issue mẫu ước giờ trực tiếp:
 
 ## 3. Tổng theo epic
 
-| Epic | Số issue (việc lá) | Tổng SWP | Tổng giờ | Ghi chú |
+| Epic | Số issue (leaf task) | Tổng SWP | Tổng giờ | Ghi chú |
 |---|---|---|---|---|
 | [E-01](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/1) Dựng hạ tầng, môi trường và vận hành | 4 | 24 | 64,5 | 4 issue, 0 sub-issue |
 | [E-02](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/6) Dựng dữ liệu nền: schema đích và dữ liệu khởi tạo | 15 | 77 | 208 | 10 issue, 9 sub-issue |
@@ -129,7 +129,7 @@ Issue mẫu ước giờ trực tiếp:
 | [E-55](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/29) Dựng lưu giữ dữ liệu, legal hold và purge | 8 | 42 | 130 | 2 issue, 7 sub-issue |
 | **Cộng** | **268** | **1165** | **4.024** | |
 
-Kiểm năng lực: đội làm issue (backend, frontend, kiểm thử, hạ tầng, BrSE) có 611 giờ mỗi sprint, gồm đội hình của estimate LAB-1 và một frontend bổ sung. 4.024 giờ ÷ 611 giờ ≈ 6,6 sprint, trong khung 8,6 sprint quy đổi của giai đoạn xây dựng (Sprint 3 trùng kỳ nghỉ đầu năm của Nhật 29/12–3/1 nên tính 60 %). Phép chia tổng giờ chưa đủ: khi xếp từng việc theo vai và phụ thuộc, đội hình LAB-1 cần 10 sprint, vì phần frontend chiếm khoảng 93 % năng lực của hai frontend mà màn chỉ dựng được khi API đã bắt đầu. Thêm một frontend toàn thời gian từ Sprint 1 và để backend hỗ trợ viết kiểm thử tự động thì kế hoạch vừa 9 sprint: việc cuối xong ngày làm việc thứ 87,6 trên 90 (đệm khoảng 2,4 ngày); Sprint 9 dùng 51 % năng lực backend, 53 % frontend, 68 % kiểm thử. Phần thêm là 550,4 giờ (68,8 MD) so với đội hình LAB-1. Sprint của từng issue xem ở trường Iteration trên GitHub Project; tình hình sau Sprint 1 và rủi ro trễ ở progress-report.md.
+Kiểm năng lực: đội làm issue (backend, frontend, kiểm thử, hạ tầng, BrSE) có 611 giờ mỗi sprint, gồm đội hình của estimate LAB-1 và một frontend bổ sung. 4.024 giờ ÷ 611 giờ ≈ 6,6 sprint, trong khung 8,6 sprint quy đổi của giai đoạn xây dựng (Sprint 3 trùng kỳ nghỉ đầu năm của Nhật 29/12–3/1 nên tính 60 %). Phép chia tổng giờ chưa đủ: khi xếp từng việc theo vai và phụ thuộc, đội hình LAB-1 cần 10 sprint, vì phần frontend chiếm khoảng 93 % năng lực của hai frontend mà màn chỉ dựng được khi API đã bắt đầu. Thêm một frontend toàn thời gian từ Sprint 1 và để backend hỗ trợ viết kiểm thử tự động thì kế hoạch vừa 9 sprint: việc cuối xong ngày làm việc thứ 87,6 trên 90 (buffer khoảng 2,4 ngày); Sprint 9 dùng 51 % năng lực backend, 53 % frontend, 68 % kiểm thử. Phần thêm là 550,4 giờ (68,8 MD) so với đội hình LAB-1. Sprint của từng issue xem ở trường Iteration trên GitHub Project; tình hình sau Sprint 1 và rủi ro trễ ở progress-report.md.
 
 ## 4. So với estimate LAB-1
 
@@ -158,9 +158,9 @@ Kiểm năng lực: đội làm issue (backend, frontend, kiểm thử, hạ t�
 | [E-51](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/25) Dựng cấu hình luật nghiệp vụ | 10,35 | 82,8 | 132 | 49,2 | LAB-1 chỉ cho [E-51](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/25) cột Frontend và thiết kế của gói 2.4 (10,35 MD); LAB-5 gồm cả API và hàm của cấu hình luật có phiên bản, thay việc sửa thẳng cấu hình (PREMISE.md P1-08). Xem cùng [E-21](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/15). Cặp [E-21](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/15) + [E-51](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/25): LAB-1 93,15 MD (745,2 giờ), LAB-5 314 giờ, chênh −431,2 giờ. Dự phòng 15 % trong số LAB-1 giải thích khoảng 97 giờ. Giờ LAB-5 của hai epic là giờ ước trực tiếp từng việc (mục 2 của file này), cao hơn giờ quy từ SWP khoảng 9 %; vì ước từng việc vẫn ra mức này, phần chênh còn lại (khoảng 334 giờ) nhiều khả năng nằm ở cách LAB-1 phân bổ cả gói 2.4 theo trọng số màn, không phải LAB-5 bỏ sót việc. |
 | [E-52](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/26) Dựng quản lý dữ liệu chủ | 37,38 | 299,04 | 199,5 | -99,54 | Phần chia của gói 2.1 (ước). Bảo trì tài xế, xe, khung giờ giao là việc mới (PREMISE.md P1-02, P2-01) nhưng không bù phần dự phòng và thiết kế của LAB-1; lịch sử giao bất biến tính ở [E-24](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/18). |
 | [E-53](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/27) Dựng chuyển dữ liệu và theo dõi tích hợp | 48,3 | 386,4 | 134 | -252,4 | Gói 4.1 gồm hai lần diễn tập và lần tải chính thức — việc vận hành giai đoạn chuyển đổi, không phải issue xây dựng; backlog chỉ có công cụ chuyển dữ liệu, màn đối soát và màn theo dõi tích hợp (cột tệp nguồn theo giả định PREMISE.md P2-07). |
-| [E-55](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/29) Dựng lưu giữ dữ liệu, legal hold và purge | 12 | 96 | 130 | 34 | LAB-1 tách 12,00 MD theo ghi chú WBS cho lưu giữ dữ liệu; LAB-5 làm đủ legal hold, purge có duyệt và hàm xoá theo từng nhóm hồ sơ (8 việc lá) nên cao hơn. |
+| [E-55](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/29) Dựng lưu giữ dữ liệu, legal hold và purge | 12 | 96 | 130 | 34 | LAB-1 tách 12,00 MD theo ghi chú WBS cho lưu giữ dữ liệu; LAB-5 làm đủ legal hold, purge có duyệt và hàm xoá theo từng nhóm hồ sơ (8 leaf task) nên cao hơn. |
 | [E-01](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/1) + [E-03](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/7) + [E-06](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/323) + [E-54](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/28) (so một dòng) | 82,3 | 658,4 | 719,5 | 61,1 | Gói 3.1 phần còn lại và 3.3 (bảo mật, hiệu năng, BCP, giám sát, WCAG, bản địa hoá) so một dòng với hạ tầng, khung ứng dụng, kiểm chứng phi chức năng và quản trị người dùng. Hai bản gần khớp: LAB-5 cao hơn 61,1 giờ (khoảng 9 %). |
-| **Cộng phần so được** | **742,9** | **5.943,2** | **4.024** | **-1.919,2** | Tách theo vai ở bảng dưới: dự phòng 15 % và thiết kế chiếm phần lớn khoảng chênh; phần còn lại do LAB-5 ước theo việc lá (không gồm phối hợp, sửa lỗi sau kiểm thử hệ thống) và các thu hẹp phạm vi đã nêu ở PREMISE.md. |
+| **Cộng phần so được** | **742,9** | **5.943,2** | **4.024** | **-1.919,2** | Tách theo vai ở bảng dưới: dự phòng 15 % và thiết kế chiếm phần lớn khoảng chênh; phần còn lại do LAB-5 ước theo leaf task (không gồm phối hợp, sửa lỗi sau kiểm thử hệ thống) và các thu hẹp phạm vi đã nêu ở PREMISE.md. |
 | Gói không có issue (1.1, 5.1, 5.2, 5.3, 6.1) | 313,95 | 2.511,6 | không có issue | — | Thiết kế cơ bản, hỗ trợ UAT, đào tạo, hypercare và quản lý dự án không có issue trong backlog xây dựng. |
 
 Tách khoảng chênh theo vai (các gói so được):
