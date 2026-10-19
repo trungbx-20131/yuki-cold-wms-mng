@@ -2,7 +2,7 @@
 
 Phạm vi: toàn bộ LAB-5 — chia task từ bộ thiết kế LAB-4, dựng GitHub Project, chấm SWP, quy đổi sang giờ, lập kế hoạch sprint, giả lập Sprint 1 và lập báo cáo tiến độ. Thực hiện 2026-10-12 → 2026-10-13 trên hai máy; công cụ chính là Claude Code.
 
-Mỗi trường hợp AI sai, được giữ nguyên hoặc bị bác đều được ghi vào nhật ký AI ngay khi xảy ra. Báo cáo này tổng hợp từ nhật ký đó: 82 trường hợp, gồm 42 trường hợp AI sai đã sửa, 20 trường hợp nghi sai nhưng kiểm tra xong vẫn giữ, 6 gợi ý bị bác, 8 góp ý của agent review, 4 trường hợp agent không theo đúng hướng dẫn quy trình (vd viết tin nhắn kết thúc bằng tiếng Đức, ghi file nháp ra ngoài chỗ được phép) và 2 lần xin dùng skill Takumi.
+Mỗi trường hợp AI sai, được giữ nguyên hoặc bị bác đều được ghi vào nhật ký AI ngay khi xảy ra. Báo cáo này tổng hợp từ nhật ký đó: 87 trường hợp, gồm 47 trường hợp AI sai đã sửa (5 trường hợp của lượt cập nhật sau khi nộp, mục 3.5), 20 trường hợp nghi sai nhưng kiểm tra xong vẫn giữ, 6 gợi ý bị bác, 8 góp ý của agent review, 4 trường hợp agent không theo đúng hướng dẫn quy trình (vd viết tin nhắn kết thúc bằng tiếng Đức, ghi file nháp ra ngoài chỗ được phép) và 2 lần xin dùng skill Takumi.
 
 Thuật ngữ dùng trong báo cáo: **work item** là một epic, issue hoặc sub-issue trên GitHub Project; **leaf task** là issue hoặc sub-issue không có sub-issue con, nơi ghi SWP và giờ; **SWP** (Standard Work Point) là điểm khối lượng chuẩn của một việc; **DoD** (Definition of Done) là điều kiện để coi một issue là xong; **nhóm epic** là một trong 6 nhóm epic của backlog (nền tảng, nhập kho và tồn kho, xuất kho, lập tuyến và giờ lái, nhiệt độ – truy xuất – báo cáo, quản trị; bảng ở [task-breakdown.md](task-breakdown.md) mục 1.5).
 
@@ -147,3 +147,12 @@ Giờ lấy từ nhật ký thô do hook ghi tự động: khoảng giữa hai s
 | **Tổng** | | **545,39** | **9,0** | |
 
 Tổng làm tròn trên tổng phút (545,39 phút = 9,09 giờ → 9,0 giờ), bằng tổng hai dòng ngày. Đối chiếu: bản ghi hội thoại của ngày 2026-10-13 cho 155,89 phút hoạt động, cũng làm tròn 2,5 giờ. Giờ trên chỉ gồm lúc có tương tác với AI, chưa gồm thời gian người làm lab tự đọc và kiểm tra.
+
+### 3.5 Cập nhật sau khi nộp (2026-10-19)
+
+Sau khi có nhận xét của giảng viên về LAB-3 (prototype), backlog được rà lại theo đúng những lỗi đã bị trừ điểm ở prototype, vì hệ thống thật dựng theo backlog này phải tránh được chúng. Hai chỗ hở cùng kiểu được tìm thấy và sửa tại chỗ trên 9 issue; không thêm issue, không đổi SWP và giờ ước lượng.
+
+- **Câu "chặn do luật thì ghi audit" rộng hơn spec.** [I-032](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/42) đọc như áp cho mọi luật chặn, trong khi spec chỉ áp cho 消費期限 và 日付逆転禁止 ở phân bổ, nạp xe và ghi nhận giao hàng. Kiểm bằng script liệt kê mọi issue áp luật có hay không ghi audit, rồi đối chiếu hợp đồng API của bộ LAB-4: [I-202.3](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/208) (phân bổ) thiếu dòng audit mà spec đòi. Đã thu hẹp câu ở I-032 thành danh sách cụ thể, thêm audit vào I-202.3 và ca test vào [I-202.4](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/209).
+- **Hồ sơ sai lệch nhiệt lúc nạp xe thiếu người đo và vị trí.** BR-TEMP-02 của RFP đòi hồ sơ cho biết ai đo, lúc nào, ở đâu, đo được bao nhiêu; bộ LAB-4 chỉ ghi vị trí khi màn hình gửi lên, nên ở bước nạp xe hồ sơ để trống. Đã thêm PREMISE P1-11 (server tự ghi người đo và vị trí hiện tại của lô) và P2-22 (kiểm nhập chưa có vị trí, hỏi khách ở [I-491](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/131)), cập nhật [I-103.1](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/179), [I-103.4](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/182), [I-103.5](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/183), [I-404.1](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/251), [I-404.2](https://github.com/trungbx-20131/yuki-cold-wms-mng/issues/252).
+
+Bài học: một câu "mọi …" trong DoD phải kiểm bằng cách liệt kê từng phần tử, và một luật có nhiều điểm vào (nhập kho, nạp xe) phải kiểm ở từng điểm vào. Giờ của lượt cập nhật này không cộng vào bảng giờ ở mục 3.4.
