@@ -9,7 +9,7 @@ Thuật ngữ: SWP (Standard Work Point) là điểm khối lượng chuẩn c�
 ## 1. Tổng quan
 
 - Backlog được chia từ bộ thiết kế chi tiết LAB-4 bản nộp ngày **2026-10-09**.
-- PREMISE.md **có thay đổi** so với LAB-4: 11 spec thêm/bỏ/sửa, 22 giả định bổ sung, 3 hướng đã chốt.
+- PREMISE.md **có thay đổi** so với LAB-4: 13 spec thêm/bỏ/sửa, 24 giả định bổ sung, 3 hướng đã chốt.
 - Backlog trên GitHub Project: **26 epic**, 144 issue, 173 sub-issue.
 - Sprint giả lập đã chạy: **Sprint 1** (2026-11-30 → 2026-12-11); báo cáo ở [progress-report.md](progress-report.md).
 
