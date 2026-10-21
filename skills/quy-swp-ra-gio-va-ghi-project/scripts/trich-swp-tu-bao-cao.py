@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Trích SWP đã chốt từ báo cáo HTML của tkm:sun-estimate → JSON làm đầu vào cho bước quy đổi giờ và ghi Project.
+"""Trích SWP đã chốt từ báo cáo HTML của tkm:estimate-swp (tên trước đây tkm:sun-estimate) → JSON làm đầu vào cho bước quy đổi giờ và ghi Project.
 
 Đọc payload nhúng `<script id="report-data" type="application/json">` (nguồn số duy nhất của báo cáo), không đọc
 phần hiển thị. Mỗi leaf task (issue/sub-issue được chấm trực tiếp) được gán nhóm việc để quy đổi giờ:
   lam-ro  : workType = investigation (làm rõ với khách)
-  FE-QA   : primaryDiscipline UI hoặc QA (giao diện, kiểm thử)
+  UI      : primaryDiscipline UI (giao diện)
+  QA      : primaryDiscipline QA (kiểm thử)
   BE      : còn lại (API, DB, migration, hạ tầng, tích hợp)
 
 Đầu ra: {"nguon", "viec": [leaf], "cha": [epic/issue cha], "swp": {số issue: SWP}} — "swp" gồm cả cha (tổng con).
@@ -20,7 +21,7 @@ MA = re.compile(r"^\[([A-Z]+-[\d.]+)\]\s*(.*)$")
 def nhom(x):
     if x.get("workType") == "investigation":
         return "lam-ro"
-    return "FE-QA" if x.get("primaryDiscipline") in ("UI", "QA") else "BE"
+    return x["primaryDiscipline"] if x.get("primaryDiscipline") in ("UI", "QA") else "BE"
 
 
 def so(ref):
@@ -30,7 +31,7 @@ def so(ref):
 def doc_payload(f):
     m = re.search(r'<script id="report-data" type="application/json">(.*?)</script>', f.read_text(), re.S)
     if not m:
-        sys.exit(f"LỖI: {f} không có payload report-data (không phải báo cáo của tkm:sun-estimate?)")
+        sys.exit(f"LỖI: {f} không có payload report-data (không phải báo cáo của tkm:estimate-swp?)")
     t = m[1].strip()
     return json.loads(html.unescape(t) if t.startswith("&") else t)
 

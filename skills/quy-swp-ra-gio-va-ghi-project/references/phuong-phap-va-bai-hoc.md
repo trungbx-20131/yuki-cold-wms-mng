@@ -18,6 +18,18 @@ skill chấm. Ở LAB-5, mẫu ước mù cho thấy skill chấm giao diện v�
 
 Một hệ số chung cho mọi việc sẽ làm thiếu khoảng 30 % giờ frontend và kiểm thử.
 
+Sau review bài nộp, 30 việc ước lại trực tiếp cho thấy hệ số trên vẫn lệch có hướng: API, hàm, luật +30 %, kiểm thử
++22 %, giao diện −20 %. Hệ số được tính lại từ cả 40 việc ước trực tiếp và tách giao diện, kiểm thử:
+
+| Nhóm | Hệ số (giờ/SWP) | Việc mẫu |
+|---|---|---|
+| BE | 3,24 | 20 |
+| UI | 4,18 | 8 |
+| QA | 5,71 | 4 |
+| lam-ro | 2,45 | 8 |
+
+Nhóm QA chỉ có 4 mẫu: khi làm thật nên ước trực tiếp thêm mẫu kiểm thử trước khi dùng hệ số này cho cả nhóm.
+
 ## 2. Mẫu prompt ước giờ trực tiếp (cho agent hoặc người)
 
 ```
@@ -26,7 +38,7 @@ Một hệ số chung cho mọi việc sẽ làm thiếu khoảng 30 % giờ fro
 Được đọc: spec mà issue trỏ tới. Không được đọc: báo cáo chấm SWP, file giờ, estimate cũ.
 Giả định đội: <công nghệ, mức kinh nghiệm>. Giờ là công thuần của một người cho đúng việc đó: đọc spec, làm,
 kiểm thử theo DoD, sửa sau review; không gồm dự phòng, chờ khách, họp, quản lý dự án.
-Mỗi issue ghi: issue, nhom (BE | FE-QA | lam-ro), gio (làm tròn 0,5), khoang [thấp, cao],
+Mỗi issue ghi: issue, nhom (BE | UI | QA | lam-ro), gio (làm tròn 0,5), khoang [thấp, cao],
 ly_do (từng bước kèm giờ), do_tin_cay (cao | vua | thap) và lý do nếu thấp.
 ```
 
@@ -48,9 +60,9 @@ Ngoại lệ (`--ngoai-le`), ví dụ đầu ra của lượt ước lại một
 
 | Kiểm | Kết quả |
 |---|---|
-| `trich-swp-tu-bao-cao.py` trên báo cáo bản cuối | 268 leaf task, 75 cha, tổng 1165 SWP — đúng tổng của báo cáo |
-| `quy-gio-theo-he-so.py` với 10 mẫu và 30 ngoại lệ | 4.024 giờ; 343/343 work item khớp từng giá trị với bảng giờ đã chốt của bài |
-| `ghi-truong-so-project.py` chạy khô trên Project thật | SWP và giờ: 0 ô cần ghi trên 343 item |
+| `trich-swp-tu-bao-cao.py` trên báo cáo bản cuối (sau review) | 310 leaf task, 83 cha, tổng 1215 SWP — đúng tổng của báo cáo |
+| `quy-gio-theo-he-so.py` với 40 việc mẫu, 4 nhóm, 58 ngoại lệ (26 việc ước trực tiếp, 32 việc Sprint 1 giữ giờ) | 4.503,5 giờ; 393/393 work item khớp từng giá trị với bảng giờ đã chốt của bài |
+| `ghi-truong-so-project.py` chạy khô trên Project thật | SWP và giờ: 0 ô cần ghi trên 393 item |
 | Ghi thật một ô rồi ghi trả giá trị cũ | đọc lại lệch 0 cả hai lần |
 
 Các script này được đóng gói ở bước cuối của LAB-5 từ những script đã dùng khi làm bài (lúc đó viết riêng cho

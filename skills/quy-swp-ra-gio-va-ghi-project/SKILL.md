@@ -1,25 +1,25 @@
 ---
 name: quy-swp-ra-gio-va-ghi-project
-description: Quy đổi SWP đã chốt (từ báo cáo HTML của tkm:sun-estimate) sang giờ ước lượng bằng hệ số theo nhóm việc lấy từ issue mẫu được ước giờ trực tiếp không xem SWP, xử lý ngoại lệ ước trực tiếp, rồi ghi SWP và giờ lên trường số của GitHub Project v2 có đọc lại đối chiếu. Dùng sau bước chấm SWP, khi cần trả lời "SWP này là bao nhiêu giờ", điền trường giờ/điểm trên GitHub Project, hoặc kiểm một nhóm epic có bị ước thấp không.
+description: Quy đổi SWP đã chốt (từ báo cáo HTML của tkm:estimate-swp, tên trước đây tkm:sun-estimate) sang giờ ước lượng bằng hệ số theo nhóm việc lấy từ issue mẫu được ước giờ trực tiếp không xem SWP, xử lý ngoại lệ ước trực tiếp, rồi ghi SWP và giờ lên trường số của GitHub Project v2 có đọc lại đối chiếu. Dùng sau bước chấm SWP, khi cần trả lời "SWP này là bao nhiêu giờ", điền trường giờ/điểm trên GitHub Project, hoặc kiểm một nhóm epic có bị ước thấp không.
 ---
 
 # Quy đổi SWP ra giờ và ghi lên GitHub Project
 
-Skill nối tiếp `tkm:sun-estimate`. Skill chấm cho ra SWP (Standard Work Point = Scope × Complexity tra bảng), nhưng
+Skill nối tiếp `tkm:estimate-swp` (tên trước đây `tkm:sun-estimate`). Skill chấm cho ra SWP (Standard Work Point = Scope × Complexity tra bảng), nhưng
 không quy ra giờ và không ghi lên Project (bản V1 chỉ đọc). Skill này làm hai việc đó, theo cách đã dùng và kiểm
-chứng ở LAB-5 (backlog 343 work item, 268 leaf task, 1165 SWP, 4.024 giờ).
+chứng ở LAB-5 (bản sau review: backlog 393 work item, 310 leaf task, 1215 SWP, 4.503,5 giờ).
 
 Thuật ngữ: **leaf task** là issue hoặc sub-issue không có sub-issue con — nơi ghi SWP và giờ; epic và issue cha lấy
-tổng của con. **Nhóm việc**: `BE` (API, DB, migration, hạ tầng, tích hợp), `FE-QA` (giao diện, kiểm thử),
+tổng của con. **Nhóm việc**: `BE` (API, DB, migration, hạ tầng, tích hợp), `UI` (giao diện), `QA` (kiểm thử),
 `lam-ro` (làm rõ với khách).
 
 ## Khi nào dùng
 
-- Đã có báo cáo HTML bản cuối của `tkm:sun-estimate`, người làm đã duyệt issue mẫu (SWP đã chốt).
+- Đã có báo cáo HTML bản cuối của `tkm:estimate-swp`, người làm đã duyệt issue mẫu (SWP đã chốt).
 - Cần giờ ước lượng cho từng leaf task và tổng theo epic, giải thích được cách quy đổi.
 - Cần ghi SWP và giờ lên trường số của GitHub Project, chạy lại an toàn.
 
-Không dùng để chấm SWP (dùng `tkm:sun-estimate`) hay ước lượng cả dự án từ RFP/spec (dùng `tkm:estimate`).
+Không dùng để chấm SWP (dùng `tkm:estimate-swp`) hay ước lượng cả dự án từ RFP/spec (dùng `tkm:estimate`).
 
 ## Quy trình
 
@@ -31,11 +31,18 @@ Không dùng để chấm SWP (dùng `tkm:sun-estimate`) hay ước lượng c�
    [references/phuong-phap-va-bai-hoc.md](references/phuong-phap-va-bai-hoc.md) mục 2.
 3. **Quy đổi**: `python3 scripts/quy-gio-theo-he-so.py --swp swp.json --mau mau.json --ra gio.json --md gio.md`
    - Hệ số nhóm = tổng giờ mẫu ÷ tổng SWP mẫu; giờ leaf = SWP × hệ số, làm tròn 0,5; cha = tổng con.
-   - Đọc tỷ lệ hệ số giữa các nhóm: lệch xa (LAB-5: FE-QA 4,86 so với BE 2,69 giờ/SWP) nghĩa là skill chấm
+   - Đọc tỷ lệ hệ số giữa các nhóm: lệch xa (LAB-5: UI 4,18, QA 5,71 so với BE 3,24 giờ/SWP) nghĩa là skill chấm
      đánh giá thấp nhóm đó; một hệ số chung sẽ làm thiếu giờ của nhóm này.
 4. **Kiểm nhóm có rủi ro ước thấp bằng ước lại trực tiếp**, không chỉ "theo dõi": chọn các epic chênh lớn nhất so
    với estimate trước (vd estimate báo giá), ước lại trực tiếp toàn bộ leaf task của chúng (cùng cách bước 2, không
    xem SWP và giờ cũ). Nếu người quyết định dùng giờ ước lại, đưa vào `--ngoai-le nl.json` rồi chạy lại bước 3.
+   **Nếu giờ ước lại lệch có hướng theo nhóm việc** (LAB-5: API, hàm, luật +30 %, kiểm thử +22 %, giao diện −20 % so
+   với hệ số cũ), đưa cả các việc ước lại vào `mau.json` (giữ SWP tại thời điểm ước) và tính lại hệ số; hai loại việc
+   lệch ngược chiều thì tách thành hai nhóm. Chỉ thay giờ của đúng các việc đã ước lại là chưa đủ: phần còn lại vẫn
+   mang độ lệch của hệ số cũ.
+4b. **Kiểm độ hạt sau khi quy giờ:** leaf task nào quá ngưỡng của luật chia task (LAB-5: 24 giờ, 3 ngày công) thì
+   tách tiếp rồi chấm lại phần tách, lấy đánh giá của việc gốc làm mốc để tổng các phần sát việc gốc (chấm độc lập
+   từng phần làm tổng phình khoảng 90 %). Việc đã vào sprint đã chạy giữ giờ lúc lập kế hoạch: đưa vào `nl.json`.
 5. **Ghi lên GitHub Project** (mặc định chạy khô; thêm `--ghi` để ghi thật):
    ```
    python3 scripts/ghi-truong-so-project.py --owner <login> --project <số> --truong SWP --gia-tri swp.json --khoa swp

@@ -10,7 +10,7 @@ Giờ là công làm thuần của một người: không gồm dự phòng, ch�
 
 Đầu vào:
   --swp       JSON từ trich-swp-tu-bao-cao.py
-  --mau       {"mau": [{"issue": "#43", "nhom": "BE"|"FE-QA"|"lam-ro", "swp": 3, "gio": 8, ...}]}
+  --mau       {"mau": [{"issue": "#43", "nhom": "BE"|"UI"|"QA"|"lam-ro", "swp": 3, "gio": 8, ...}]}
   --ngoai-le  {"viec": [{"issue": "#82", "gio": 29.5, "khoang": [20, 40], ...}]}   (tuỳ chọn)
 Đầu ra: --ra gio.json {"he_so", "gio": {số issue: giờ}, "ngoai_le": [...], "tong_leaf"} · --md bảng tóm tắt (tuỳ chọn)
 

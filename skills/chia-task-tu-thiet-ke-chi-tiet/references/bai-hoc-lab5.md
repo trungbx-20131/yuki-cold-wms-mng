@@ -31,3 +31,17 @@ Hai script được đóng gói ở bước cuối của LAB-5 từ các script 
   sprint; bản trong skill chỉ đặt cho item mới hoặc chưa có Status. Thử trên repo nháp trước.
 - **Thuật ngữ cho người ngoài.** Chốt bảng thuật ngữ trước khi viết task-breakdown; tránh từ tự đặt ("việc lá",
   "lát", "độ hạt"), dùng leaf task, nhóm epic, granularity và giải nghĩa lần đầu.
+
+Bổ sung sau review bài nộp (2026-10-21):
+
+- **Luật độ hạt phải kiểm lại sau khi quy giờ, không chỉ lúc chia.** Luật "tối đa 3 ngày công" được đặt lúc chia task,
+  nhưng sau khi quy SWP ra giờ còn 33 leaf task quá 24 giờ mà không ai kiểm. Thêm phép kiểm vào bước quy giờ; việc
+  quá ngưỡng thì tách theo đầu ra kiểm được độc lập (endpoint, phần giao diện, nhóm ca kiểm thử).
+- **Vai gợi ý phải khớp loại việc, và bước xếp sprint không được chuyển việc sang chuyên môn khác** chỉ để kịp lịch:
+  giờ tính cho người đúng vai. Thiếu người thì thêm người hoặc lùi mốc, và nói rõ trong ước lượng.
+- **Dòng PREMISE nêu issue bị ảnh hưởng thì issue đó phải có dòng DoD tương ứng.** Kiểm bằng script: với mỗi mã dòng
+  PREMISE, mọi issue được liệt kê đều nhắc mã đó trong DoD hoặc spec nguồn.
+- **Dòng DoD mẫu áp theo nhãn phải hợp loại việc:** API chỉ đọc không mang dòng "thao tác ghi", thành phần dùng
+  chung không mang dòng "biến thể của màn".
+- **Giả định không được thu hẹp yêu cầu RFP đã nêu rõ.** "Chưa làm X, chờ khách" chỉ hợp lệ khi RFP để ngỏ X; nếu RFP
+  đã yêu cầu X thì đó là phạm vi, phải có issue.

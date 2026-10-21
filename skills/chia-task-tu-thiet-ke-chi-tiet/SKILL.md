@@ -14,7 +14,7 @@ Project. **Leaf task** là issue hoặc sub-issue không có sub-issue con — n
 - Có bộ thiết kế chi tiết (spec màn hình, ADR, thiết kế dữ liệu, danh mục API) và cần backlog để ước lượng, xếp sprint.
 - Có backlog JSON (của mình hoặc agent sinh) và cần kiểm cấu trúc trước khi review hay đẩy lên.
 
-Không dùng để chấm điểm (dùng `tkm:sun-estimate`, rồi skill `quy-swp-ra-gio-va-ghi-project` để ra giờ) hay để
+Không dùng để chấm điểm (dùng `tkm:estimate-swp`, tên trước đây `tkm:sun-estimate`, rồi skill `quy-swp-ra-gio-va-ghi-project` để ra giờ) hay để
 viết thiết kế chi tiết.
 
 ## Quy trình
